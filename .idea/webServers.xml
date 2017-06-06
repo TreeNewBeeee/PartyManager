@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="23bf6099-c6a3-44e3-b70c-11ff2c22539a" name="Apache" url="http://localhost/PartyManager">
+        <fileTransfer port="0" mountedRoot="E:\wamp\www\PartyManager\Files" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="./fonts/font-awesome/css/font-awesome.min.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-treeview.css" rel="stylesheet">
+    <!-- Required Javascript -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script src="../js/bootstrap-treeview.min.js"></script>
+
+    <style type="text/css">
+
+
+        table {
+
+            border-collapse: separate;
+            border-spacing: 10px 5px;
+        }
+
+        th {
+            height: 40px;
+            width: 400px;
+            border: 1px solid gray;
+            padding: 10px;
+        }
+
+        td {
+            height: 280px;
+            width: 400px;
+            border: 1px solid gray;
+            padding: 10px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="navbar">
+
+    <h3 align="center">系统菜单</h3>
+
+    <div id="tree"></div>
+
+    <script type="text/javascript">
+        function getTree() {
+            // Some logic to retrieve, or generate tree structure
+            var tree = [
+                {
+                    text: "组织管理",
+                    state: {
+                        expanded: false
+                    },
+                    nodes: [
+                        {
+                            text: "机关党支部",
+                            href: "../sectorinfo/office.php?branch=机关党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=机关党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=机关党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=机关党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=机关党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=机关党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=机关党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=机关党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "通信室党支部",
+                            href: "../sectorinfo/office.php?branch=通信室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=通信室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=通信室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=通信室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=通信室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=通信室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=通信室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=通信室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "通信运行室党支部",
+                            href: "../sectorinfo/office.php?branch=通信运行室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=通信运行室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=通信运行室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=通信运行室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=通信运行室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=通信运行室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=通信运行室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=通信运行室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "自动化数据室党支部",
+                            href: "../sectorinfo/office.php?branch=自动化数据室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=自动化数据室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+
+
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=自动化数据室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=自动化数据室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=自动化数据室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=自动化数据室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=自动化数据室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=自动化数据室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "雷达室党支部",
+                            href: "../sectorinfo/office.php?branch=雷达室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=雷达室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=雷达室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=雷达室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=雷达室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=雷达室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=雷达室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=雷达室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "导航室党支部",
+                            href: "../sectorinfo/office.php?branch=导航室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=导航室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=导航室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=导航室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=导航室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=导航室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=导航室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=导航室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "航路导航室党支部",
+                            href: "../sectorinfo/office.php?branch=航路导航室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=航路导航室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    href: "../member.php?branch=航路导航室党支部",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=航路导航室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=航路导航室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=航路导航室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=航路导航室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=航路导航室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=航路导航室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "供电室党支部",
+                            href: "../sectorinfo/office.php?branch=供电室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=供电室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=供电室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=供电室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=供电室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=供电室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=供电室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=供电室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "维修室党支部",
+                            href: "../sectorinfo/office.php?branch=维修室党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=维修室党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=维修室党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=维修室党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=维修室党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=维修室党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=维修室党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=维修室党支部"
+                                }
+                            ]
+                        },
+                        {
+                            text: "现场车队党支部",
+                            href: "../sectorinfo/office.php?branch=现场车队党支部",
+                            nodes: [
+                                {
+                                    text: "支部概述",
+                                    href: "../sectorinfo/office.php?branch=现场车队党支部"
+                                },
+                                {
+                                    text: "个人信息",
+                                    nodes: [
+                                        {
+                                            text: "党员",
+                                            href: "../member.php?branch=现场车队党支部"
+                                        },
+                                        {
+                                            text: "预备党员",
+                                            href: "../pre_member.php?branch=现场车队党支部"
+                                        },
+                                        {
+                                            text: "发展对象",
+                                            href: "../develop_member.php?branch=现场车队党支部"
+                                        },
+                                        {
+                                            text: "积极分子",
+                                            href: "../active_member.php?branch=现场车队党支部"
+                                        },
+                                        {
+                                            text: "申请入党",
+                                            href: "../application_member.php?branch=现场车队党支部"
+                                        },
+                                    ]
+                                },
+                                {
+                                    text: "党费信息",
+                                    href: "../feeinfo.php?branch=现场车队党支部"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    text: "任务推送",
+                    state: {
+                        expanded: false
+                    },
+                    nodes: [
+                        {
+                            text: "定期任务",
+                            href: "../mission.php?type=定期任务"
+                        },
+                        {
+                            text: "抢接任务",
+                            href: "../rush_mission.php?type=抢接任务"
+
+                        },
+                        {
+                            text: "指定任务",
+                            href: "../mission.php?type=指定任务"
+
+                        },
+                        {
+                            text: "亮点工作",
+                            href: "../mission.php?type=亮点工作"
+                        }
+                    ]
+                },
+                {
+                    text: "排名统计",
+                    state: {
+                        expanded: false
+                    },
+                    nodes: [
+                        {
+                            text: "分类赋分",
+                            nodes: [
+                                {
+                                    text: "定期任务得分",
+                                    href: "../calculation/fixedCalculation.php"
+
+                                },
+                                {
+                                    text: "不定期任务得分",
+                                    href: "../calculation/unfixedCalculation.php"
+
+                                },
+                                {
+                                    text: "亮点工作得分",
+                                    href: "../calculation/shinningCalculation.php"
+
+                                },
+                                {
+                                    text: "党委评价",
+                                    href: "../partyCommitteeList.php"
+
+
+                                }
+                            ]
+                        },
+                        {
+                            text: "排名统计",
+                            nodes: [
+                                {
+                                    text: "月度",
+                                    nodes: [
+                                        {
+                                            text: "党支部排名",
+                                            href: "../monthBranchRank.php"
+
+                                        },
+                                        {
+                                            text: "党支部书记排名",
+                                            href: "../monthSecretaryRank.php"
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: "年度",
+                                    nodes: [
+                                        {
+                                            text: "党支部排名",
+                                            href: "../yearBranchRank.php"
+
+                                        },
+                                        {
+                                            text: "党支部书记排名",
+                                            href: "../yearSecretaryRank.php"
+
+                                        }
+                                    ]
+                                }
+
+                            ]
+
+                        }
+                    ]
+                },
+                {
+                    text: "工作计划",
+                    state: {
+                        expanded: false
+                    },
+                    nodes: [
+                        {
+                            text: "年初计划",
+                            href: "../plans/preYearPlanUnit.html"
+                        },
+                        {
+                            text: "月度总结",
+                            href: "../plans/monthPlanUnit.html"
+                        },
+                        {
+                            text: "季度总结",
+                            href: "../plans/"
+                        },
+                        {
+                            text: "年终述职",
+                            href: "../plans/"
+                        },
+                        {
+                            text: "安全态势报告",
+                            href: "../plans/"
+                        },
+                        {
+                            text: "问题导向性项目",
+                            href: "../plans/"
+                        },
+                        {
+                            text: "两学一做开展情况",
+                            href: "../plans/"
+                        }
+                    ]
+                }
+            ];
+
+
+            return tree;
+        }
+
+        $('#tree').treeview({data: getTree(),
+            enableLinks:true,
+            backColor:'#949494',
+            highlightSelected: true, //是否高亮选中
+            expandIcon: 'glyphicon glyphicon-chevron-right',//展开图标 
+            collapseIcon: 'glyphicon glyphicon-chevron-down',//合并图标 
+            //nodeIcon: 'glyphicon glyphicon-file',//无节点图标 
+            //icon: "",
+            showBorder: true,
+            color: "#272727",//文字和图标颜色 
+            backColor: "#D4D4D4",//背景色 
+            onhoverColor: "#CFCFCF",//鼠标悬浮颜色 
+            borderColor:"#FFFFFF",//边框颜色 
+            selectedColor: "#000000",//选中颜色 
+            selectedBackColor: "#EAEAEA",//选中背景色 
+        });
+
+        $('#tree').treeview('disableNode', [ nodeId, { silent: true } ]);
+
+    </script>
+
+</div>
+
+</body>
+
+</html>

@@ -25,7 +25,7 @@
 
   #content {
       float: center;
-      margin-left: 20px;
+      margin-left: 50px;
       margin-right: 20px;
   }
 
@@ -33,13 +33,13 @@
   table{
    
     border-collapse: separate;
-    border-spacing: 10px 5px;
+    border-spacing: 20px 5px; <!--表格距左右边框距离-->
 
   }
 
   th{
     height: 40px;
-    width: 400px;
+    width: 200px;
     padding: 10px;
     border-radius:5px;
     overflow:hidden
@@ -53,7 +53,7 @@
 
   td{
     height: 165px;
-    width: 400px;
+    width: 200px;
     border: 1px solid gray;
     padding: 10px;
     border-radius:5px;
@@ -71,7 +71,7 @@
 
 <body>
 
-   <h3><i class="fa fa-bullhorn"></i>&nbsp;通知</h3>
+   <h3>&nbsp;<i class="fa fa-bullhorn"></i>&nbsp;通知</h3>
 
       <hr>
      

@@ -3,12 +3,12 @@
  * Created by PhpStorm.
  * User: TreeNewBeee
  * Date: 2017-06-12
- * Time: 16:22
+ * Time: 17:57
  */
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<?php session_start(); ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+    <?php session_start(); ?>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -36,7 +36,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h3>季度总结-<?php echo $branch?></h3>
+                    <h3>年终述职-<?php echo $branch?></h3>
                     <hr/>
                 </div>
 
@@ -55,8 +55,8 @@
                 echo <<<PRINT
                 <div class="row">
                     <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="seasonPlanCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="seasonPlanDelete.php?branch={$branch}" role="button">删除</a>
+                        <a class="btn btn-default" href="endYearCreate.php?branch={$branch}" role="button">新增</a>
+                        <a class="btn btn-default" href="endYearDelete.php?branch={$branch}" role="button">删除</a>
                         <hr>
                     </div>
         
@@ -76,8 +76,7 @@ PRINT;
                     <table class="table table-condensed">
                         <tr>
                             <th width="10%" class="text-center">序号</th>
-                            <th width="15%" class="text-center">年份</th>
-                            <th width="15%" class="text-center">季度</th>
+                            <th width="35%" class="text-center">年份</th>
                             <th class="text-center">下载</th>
                         </tr>
                         <?php
@@ -86,7 +85,7 @@ PRINT;
                         if ($conn->connect_error) die($conn->connect_error);
                         mysqli_set_charset($conn, 'utf8');
 
-                        $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '季度总结'  ORDER BY `plans`.`ID` DESC";
+                        $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '年终述职'  ORDER BY `plans`.`ID` DESC";
                         $result = $conn->query($query);
                         // TODO: 未完成根据时间限制查看
                         $index = 1;
@@ -95,7 +94,6 @@ PRINT;
                             <tr>
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
-                                <td class="text-center">{$row['season']}</td>
                                 <td class="text-center"><a class="btn btn-default btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
                             </tr>
 

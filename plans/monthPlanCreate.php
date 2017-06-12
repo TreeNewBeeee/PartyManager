@@ -111,7 +111,7 @@ if (!is_dir($path)){
 if (isset($_POST['year'])){
     // 上传文件
     if ($_FILES['file']['name'] != '') {
-        $filename = "JB-MonthSummary-".date("Y-m")."-".$_FILES['file']['name'];    // 重命名文件
+        $filename = "JB-MonthSummary-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
         if ($_FILES['file']['error'] > 0) {
             echo "错误状态：" . $_FILES['file']['error'];
         } else {

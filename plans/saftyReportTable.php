@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: TreeNewBeee
+ * Date: 2017-06-12
+ * Time: 23:22
+ */
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <?php session_start(); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -5,18 +14,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
-    <title>年初计划</title>
+    <title></title>
 </head>
 
 <body>
 <?php
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-    } else {
-        echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
-    }
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
+}
 
-    $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
+$branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
 <div class="container">
@@ -27,7 +36,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <h3>年初计划-<?php echo $branch?></h3>
+                <h3>安全态势报告-<?php echo $branch?></h3>
                 <hr/>
             </div>
 
@@ -46,9 +55,9 @@
             echo <<<PRINT
                 <div class="row">
                     <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="preYearPlanCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="preYearPlanDelete.php?branch={$branch}" role="button">删除</a>
-                        
+                        <a class="btn btn-default" href="saftyReportCreate.php?branch={$branch}" role="button">新增</a>
+                        <a class="btn btn-default" href="saftyReportDelete.php?branch={$branch}" role="button">删除</a>
+                        <hr>
                     </div>
         
                 </div>
@@ -60,12 +69,15 @@ PRINT;
         ?>
 
         <br>
+
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <table class="table table-condensed">
                     <tr>
                         <th width="10%" class="text-center">序号</th>
                         <th width="15%" class="text-center">年份</th>
+                        <th width="15%" class="text-center">月份</th>
                         <th class="text-center">下载</th>
                     </tr>
                     <?php
@@ -74,7 +86,7 @@ PRINT;
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
 
-                    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '年初计划'  ORDER BY `plans`.`year` DESC";
+                    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '安全态势报告'  ORDER BY `plans`.`ID` DESC";
                     $result = $conn->query($query);
                     // TODO: 未完成根据时间限制查看
                     $index = 1;
@@ -83,6 +95,7 @@ PRINT;
                             <tr>
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
+                                <td class="text-center">{$row['month']}</td>
                                 <td class="text-center"><a class="btn btn-default btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
                             </tr>
 
@@ -112,10 +125,3 @@ PRINTTABLE;
 
 
 
-<?php
-/**
- * Created by PhpStorm.
- * User: TreeNewBeee
- * Date: 2017-04-27
- * Time: 01:11
- */

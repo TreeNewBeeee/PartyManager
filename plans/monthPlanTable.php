@@ -27,7 +27,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <h2>月底总结-<?php echo $branch?></h2>
+                <h3>月底总结-<?php echo $branch?></h3>
                 <hr/>
             </div>
 

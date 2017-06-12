@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: TreeNewBeee
  * Date: 2017-06-12
- * Time: 16:30
+ * Time: 18:03
  */
 ?>
 
@@ -36,7 +36,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h2>新增季度总结-<?php echo $branch?></h2>
+                    <h2>新增年终述职-<?php echo $branch?></h2>
                     <hr/>
                 </div>
 
@@ -55,22 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="season">季度</label>
-                                    <div class="form-group">
-                                        <select class="form-control" id="season" name="season">
-                                            <option value="1">一季度</option>
-                                            <option value="2">二季度</option>
-                                            <option value="3">三季度</option>
-                                            <option value="4">四季度</option>
 
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div class="form-group">
@@ -105,7 +90,7 @@
  * Time: 01:11
  */
 // TODO：未添加权限 未判断是否已经上传
-$path = "../Files/".date("Y")."/".date("m")."/SeasonSummary/";   // 文件存储路径
+$path = "../Files/".date("Y")."/".date("m")."/EndYear/";   // 文件存储路径
 if (!is_dir($path)){
     mkdir($path,0777,true);
 }                         // 以年/月/类别为路径存储，如果不存在该路径则创建
@@ -113,7 +98,7 @@ if (!is_dir($path)){
 if (isset($_POST['year'])){
     // 上传文件
     if ($_FILES['file']['name'] != '') {
-        $filename = "JB-SeasonSummary-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
+        $filename = "JB-EndYear-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
         if ($_FILES['file']['error'] > 0) {
             echo "错误状态：" . $_FILES['file']['error'];
         } else {
@@ -122,10 +107,10 @@ if (isset($_POST['year'])){
             } else {
                 move_uploaded_file($_FILES["file"]["tmp_name"],
                     $path . iconv('utf-8', 'gb2312', $filename));
-//                echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
-//                echo "类型: " . $_FILES["file"]["type"] . "<br />";
-//                echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-//                echo "<script>alert('上传成功！');</script>";
+//                    echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
+//                    echo "类型: " . $_FILES["file"]["type"] . "<br />";
+//                    echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+                //            echo "<script>alert('上传成功！');</script>";
             }
 
 
@@ -142,14 +127,14 @@ if (isset($_POST['year'])){
 
     $query = "INSERT INTO `plans` (`ID`,`branch`, `year`, `month`, `season`, `fileName`, `type`) 
                   VALUES 
-                  (NULL, '".$branch."', '".$_POST['year']."', NULL , '".$_POST['season']."', '".$path.$filename."', '季度总结')";
+                  (NULL, '".$branch."', '".$_POST['year']."', NULL , NULL, '".$path.$filename."', '年终述职')";
     $conn->query($query);
     $conn->close();
 
     echo <<<JUMP
             <script language="JavaScript">
                    alert("上传成功");
-                   self.location='seasonPlanTable.php?branch={$branch}';     
+                   self.location='endYearTable.php?branch={$branch}';     
             </script>
 JUMP;
 

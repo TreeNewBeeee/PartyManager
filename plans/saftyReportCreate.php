@@ -3,9 +3,10 @@
  * Created by PhpStorm.
  * User: TreeNewBeee
  * Date: 2017-06-12
- * Time: 16:30
+ * Time: 23:28
  */
 ?>
+
 
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
     <?php session_start(); ?>
@@ -36,7 +37,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h2>新增季度总结-<?php echo $branch?></h2>
+                    <h2>新增安全态势报告-<?php echo $branch?></h2>
                     <hr/>
                 </div>
 
@@ -58,14 +59,21 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="season">季度</label>
+                                    <label for="month">月份</label>
                                     <div class="form-group">
-                                        <select class="form-control" id="season" name="season">
-                                            <option value="1">一季度</option>
-                                            <option value="2">二季度</option>
-                                            <option value="3">三季度</option>
-                                            <option value="4">四季度</option>
-
+                                        <select class="form-control" id="month" name="month">
+                                            <option value="1">一月</option>
+                                            <option value="2">二月</option>
+                                            <option value="3">三月</option>
+                                            <option value="4">四月</option>
+                                            <option value="5">五月</option>
+                                            <option value="6">六月</option>
+                                            <option value="7">七月</option>
+                                            <option value="8">八月</option>
+                                            <option value="9">九月</option>
+                                            <option value="10">十月</option>
+                                            <option value="11">十一月</option>
+                                            <option value="12">十二月</option>
                                         </select>
                                     </div>
                                 </div>
@@ -105,7 +113,7 @@
  * Time: 01:11
  */
 // TODO：未添加权限 未判断是否已经上传
-$path = "../Files/".date("Y")."/".date("m")."/SeasonSummary/";   // 文件存储路径
+$path = "../Files/".date("Y")."/".date("m")."/SaftySituationReport/";   // 文件存储路径
 if (!is_dir($path)){
     mkdir($path,0777,true);
 }                         // 以年/月/类别为路径存储，如果不存在该路径则创建
@@ -113,7 +121,7 @@ if (!is_dir($path)){
 if (isset($_POST['year'])){
     // 上传文件
     if ($_FILES['file']['name'] != '') {
-        $filename = "JB-SeasonSummary-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
+        $filename = "JB-安全态势报告-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
         if ($_FILES['file']['error'] > 0) {
             echo "错误状态：" . $_FILES['file']['error'];
         } else {
@@ -122,10 +130,10 @@ if (isset($_POST['year'])){
             } else {
                 move_uploaded_file($_FILES["file"]["tmp_name"],
                     $path . iconv('utf-8', 'gb2312', $filename));
-//                echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
-//                echo "类型: " . $_FILES["file"]["type"] . "<br />";
-//                echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-//                echo "<script>alert('上传成功！');</script>";
+//                    echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
+//                    echo "类型: " . $_FILES["file"]["type"] . "<br />";
+//                    echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+                //            echo "<script>alert('上传成功！');</script>";
             }
 
 
@@ -142,14 +150,14 @@ if (isset($_POST['year'])){
 
     $query = "INSERT INTO `plans` (`ID`,`branch`, `year`, `month`, `season`, `fileName`, `type`) 
                   VALUES 
-                  (NULL, '".$branch."', '".$_POST['year']."', NULL , '".$_POST['season']."', '".$path.$filename."', '季度总结')";
+                  (NULL, '".$branch."', '".$_POST['year']."', '".$_POST['month']."', NULL, '".$path.$filename."', '安全态势报告')";
     $conn->query($query);
     $conn->close();
 
     echo <<<JUMP
             <script language="JavaScript">
                    alert("上传成功");
-                   self.location='seasonPlanTable.php?branch={$branch}';     
+                   self.location='saftyReportTable.php?branch={$branch}';     
             </script>
 JUMP;
 

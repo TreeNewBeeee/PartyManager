@@ -1,0 +1,23 @@
+进入后，选通用的101键PC键盘
+在键盘layout选择中，选Other
+然后在选项中，选English(US)
+再选English(US, alternative international)
+sudo reboot
+
+软键盘
+sudo apt-get install florence
+
+旋转(如果不使用树莓派原装的液晶触摸屏可省去)
+打开SD卡中的/boot/config.txt文件，增加以下一行：
+lcd_rotate=2
+
+修改用户密码
+sudo passwd root
+
+安装中文字体
+使用sudo apt-get install ttf-wqy-zenhei xfonts-intl-chinese wqy*  安装即可
+
+
+VNC
+sudo apt-get install tightvncserver
+vncserver :1（每次连接前先在树莓派上运行，类似于给连接指定一个端口）

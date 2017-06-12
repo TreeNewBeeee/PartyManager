@@ -79,18 +79,22 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
  * Time: 01:11
  */
     // TODO：未添加权限 未判断是否已经上传
-
-    if (isset($_POST['year'])){
+$path = "../Files/".date("Y")."/".date("m")."/preYearPlan/";   // 文件存储路径
+if (!is_dir($path)){
+    mkdir($path,0777,true);
+}
+if (isset($_POST['year'])){
         // 上传文件
         if ($_FILES['file']['name'] != '') {
+            $filename = "JB-PreYearPlan-".date("Y-m")."-".$_FILES['file']['name'];    // 重命名文件
             if ($_FILES['file']['error'] > 0) {
                 echo "错误状态：" . $_FILES['file']['error'];
             } else {
-                if (file_exists("../Files/" . $_FILES["file"]["name"])) {
+                if (file_exists($path . $_FILES["file"]["name"])) {
                     echo $_FILES["file"]["name"] . " 已经存在. ";
                 } else {
                     move_uploaded_file($_FILES["file"]["tmp_name"],
-                        "../Files/" . iconv('utf-8', 'gb2312', $_FILES["file"]["name"]));
+                        $path . iconv('utf-8', 'gb2312', $filename));
 //                    echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
 //                    echo "类型: " . $_FILES["file"]["type"] . "<br />";
 //                    echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
@@ -100,7 +104,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
             }
         } else {
-            echo "<script>alert('请上传文件！');</script>";
+//            echo "<script>alert('请上传文件！');</script>";
         }
 
         // 更新数据库
@@ -111,7 +115,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
         $query = "INSERT INTO `plans` (`ID`,`branch`, `year`, `month`, `season`, `fileName`, `type`) 
                   VALUES 
-                  (NULL, '".$branch."', '".$_POST['year']."', NULL, NULL, '".$_FILES["file"]["name"]."', '年初计划')";
+                  (NULL, '".$branch."', '".$_POST['year']."', NULL, NULL, '".$path.$filename."', '年初计划')";
         $conn->query($query);
         $conn->close();
 

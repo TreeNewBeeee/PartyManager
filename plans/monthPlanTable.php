@@ -46,8 +46,8 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
             echo <<<PRINT
                 <div class="row">
                     <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="monthPlanCreate.php?branch=<?php echo $branch?>" role="button">新增</a>
-                        <a class="btn btn-default" href="monthPlanDelete.php?branch=<?php echo $branch?>" role="button">删除</a>
+                        <a class="btn btn-default" href="monthPlanCreate.php?branch={$branch}" role="button">新增</a>
+                        <a class="btn btn-default" href="monthPlanDelete.php?branch={$branch}" role="button">删除</a>
                         <hr>
                     </div>
         

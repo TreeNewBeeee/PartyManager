@@ -46,8 +46,8 @@
             echo <<<PRINT
                 <div class="row">
                     <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="preYearPlanCreate.php?branch=<?php echo $branch?>" role="button">新增</a>
-                        <a class="btn btn-default" href="preYearPlanDelete.php?branch=<?php echo $branch?>" role="button">删除</a>
+                        <a class="btn btn-default" href="preYearPlanCreate.php?branch={$branch}" role="button">新增</a>
+                        <a class="btn btn-default" href="preYearPlanDelete.php?branch={$branch}" role="button">删除</a>
                         
                     </div>
         

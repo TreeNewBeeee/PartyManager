@@ -119,6 +119,7 @@
                 echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
             }
 
+            $var_authorCode = isset($_GET['authorityCode']) ? $_GET['authorityCode'] : NULL;    // 获取领导编码
             $name = isset($_GET['name']) ? $_GET['name'] : NULL;    // 获取领导姓名
 
 
@@ -129,7 +130,10 @@
             $line1 = 5;
             $row1 = 10;
 
-            $flag;
+            $flag = 0;
+
+            $arr_authorCode = [0,0,0,0,0];
+            $leader = [0,0,0,0,0];
 
             $year = date("Y");
 
@@ -142,70 +146,109 @@
                 if ($conn->connect_error) die($conn->connect_error);
                 mysqli_set_charset($conn, 'utf8');
 
+                $query1 = "SELECT * FROM person WHERE `authorityCode` >= '10' AND `authorityCode` <= '14'";
+                $result = $conn->query($query1);
+            
+                if (!$result) die($conn->connect_error);
+
+                while ($rows = $result->fetch_array()){
+                    switch($rows['authorityCode']){
+
+                        case"10":
+                          $leader[0] = $rows['name'];
+                          $arr_authorCode[0] = 10;
+                          break;
+                        case"11":
+                          $leader[1] = $rows['name'];
+                          $arr_authorCode[1] = 11;
+                          break;
+                        case"12":
+                          $leader[2] = $rows['name'];
+                          $arr_authorCode[2] = 12;
+                          break;
+                        case"13":
+                          $leader[3] = $rows['name'];
+                          $arr_authorCode[3] = 13;
+                          break;
+                        case"14":
+                          $leader[4] = $rows['name'];
+                          $arr_authorCode[4] = 14;
+                          break;
+
+                    }
+
+                }   
+
                 $query = "SELECT * FROM `partycommitteescore` WHERE `branchSecretary` LIKE '".$secretary."' AND `evaluateTime` = '".$year."' ";
 
                 $result = $conn->query($query);
                 if (!$result) die($conn->connect_error);
 
                 while ($rows = $result->fetch_array()){
-                    $leaderName = $rows['name'];
 
                     //提取并存储各领导的打分情况
 
-                    if (isset($rows['totalScore']))
-                    {
-                        switch ($leaderName){
-                        case "王忠义":
-                            $partyCommitteeScore[0][$index] = $rows['totalScore'];
-                            break;
-                        case "胡兴宇":
-                            $partyCommitteeScore[1][$index] = $rows['totalScore'];
-                            break;
-                        case "牟小光":
-                            $partyCommitteeScore[2][$index] = $rows['totalScore'];
-                            break;
-                        case "文奇":
-                            $partyCommitteeScore[3][$index] = $rows['totalScore'];
-                            break;
-                        case "尚德佳":
-                            $partyCommitteeScore[4][$index] = $rows['totalScore'];
-                            break;
+                    if (isset($rows['totalScore'])){
+                        foreach($leader as $key=>$value){
+                            //将领导姓名转化为对应编码
+
+                            if($value == $rows['name']){
+                                switch ($arr_authorCode[$key]){
+                                case "10":
+                                    $partyCommitteeScore[0][$index] = $rows['totalScore'];
+                                    break;
+                                case "11":
+                                    $partyCommitteeScore[1][$index] = $rows['totalScore'];
+                                    break;
+                                case "12":
+                                    $partyCommitteeScore[2][$index] = $rows['totalScore'];
+                                    break;
+                                case "13":
+                                    $partyCommitteeScore[3][$index] = $rows['totalScore'];
+                                    break;
+                                case "14":
+                                    $partyCommitteeScore[4][$index] = $rows['totalScore'];
+                                    break;
+
+                                }
+                            }
+
+                        }
 
                     }
-
-                       
-
-                }
                   
-                //echo $partyCommitteeScore[$index1];
+               
                 
-            }
-            $index++;
+                }
+
+                $index++;
 
 
         }
+
                     //不同领导对应存储分数的不同行，提取对应行
-                    switch ($name)
+        
+                    switch ($var_authorCode)
                     {
-                        case "王忠义":
+                        case "10":
                             $flag = 0;
                             break;
-                        case "胡兴宇":
+                        case "11":
                             $flag = 1;
                             break;
-                        case "牟小光":
+                        case "12":
                             $flag = 2;
                             break;
-                        case "文奇":
+                        case "13":
                             $flag = 3;
                             break;
-                        case "尚德佳":
+                        case "14":
                             $flag = 4;
                             break;
 
+
                     }
 
-      
         ?>
 
         <h3><i class="fa fa-user"></i>&nbsp;<?php echo $name?>-评价列表</h3>
@@ -228,12 +271,12 @@
                     <tr>
                         <td>通信室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][1] ?></td>
-                        <td><a href="partyCommitteeScore.php?branchSecretary=王涛&branch=通信室党支部&name=<?php echo $name?>">评分</a></td>
+                        <td><a href="partyCommitteeScore.php?branchSecretary=叶庆康&branch=通信室党支部&name=<?php echo $name?>">评分</a></td>
                     </tr>
                     <tr>
                         <td>通信运行室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][2] ?></td>
-                        <td><a href="partyCommitteeScore.php?branchSecretary=叶庆康&branch=通信运行室党支部&name=<?php echo $name?>">评分</a></td>
+                        <td><a href="partyCommitteeScore.php?branchSecretary=王涛&branch=通信运行室党支部&name=<?php echo $name?>">评分</a></td>
                     </tr>
                     <tr>
                         <td>自动化数据室党支部</td>

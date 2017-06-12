@@ -120,6 +120,7 @@
 
     </style>
 </head>
+
 <body>
 <?php
     if (isset($_SESSION['username'])) {
@@ -129,9 +130,53 @@
 
     }
 
+    $element1Score = 0;
+    $element2Score = 0;
+    $element3Score = 0;
+    $element4Score = 0;
+    $element5Score = 0;
+    $totalScore = 0;
+    $suggestion = 0;
+
     $name = isset($_GET['name']) ? $_GET['name'] : NULL;    // 获取领导姓名
-    $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取被评价人姓名 
+    $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取被评价支部名称 
     $branchSecretary = isset($_GET['branchSecretary']) ? $_GET['branchSecretary'] : NULL;    // 获取被评价人姓名 
+   
+    require_once './db_login.php';
+    $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+    if ($conn->connect_error) die($conn->connect_error);
+    mysqli_set_charset($conn, 'utf8');
+
+    $query1 = "SELECT * FROM `partycommitteescore` WHERE `name` = '".$username."' AND `branchSecretary` = '".$branchSecretary."' ";
+
+    $result = $conn->query($query1);
+    if (!$result) die($conn->connect_error);
+
+    
+    if ($result->num_rows == 0){
+       $var = 0;    
+    }
+    else{
+       $var = 1;   //若领导已为该支部打分，置位
+
+    }
+
+
+    while ($rows = $result->fetch_array()){
+
+        //提取并存储分项得分
+        $element1Score += $rows['element1Score'];   
+        $element2Score += $rows['element2Score'];
+        $element3Score += $rows['element3Score'];
+        $element4Score += $rows['element4Score'];
+        $element5Score += $rows['element5Score'];
+        $totalScore += $rows['totalScore'];
+        $suggestion = $rows['suggestion'];
+
+    }
+
+
+   
 
 ?>
 
@@ -145,6 +190,7 @@
                 <form action="" method="post">
                 <hr>
                 <table class="table table-condensed" align="center">
+                
                     <tr>
                         <th width="15%" class="warning">考核要素</th>                     
                         <th width="15%" class="warning">分值</th>  
@@ -155,7 +201,18 @@
                         <td rowspan="3">计划、组织协调能力</td>
                         <td>15-20分</td>
                         <td>计划切实可行，组织协调、高效、有序</td>
-                        <td rowspan="3"><input type="text" name="score1" style="height: 90px"></td>
+                        <?php
+                            if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score1" style="height: 95px" placeholder="$element1Score" ></td>
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score1" style="height: 90px" ></td>
+GRAB;
+                           }
+                        ?>
                     </tr>
                     <tr>
                         <td>5-15分</td>
@@ -169,7 +226,18 @@
                         <td rowspan="3">决策能力和影响力</td>
                         <td>15-20分</td>
                         <td>支部班子工作决策果断且准确，极少出现失误，个人威信很高</td>
-                        <td rowspan="3"><input type="text" name="score2" style="height: 70px"></td> 
+                        <?php
+                            if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score2" style="height: 90px" placeholder="$element2Score" ></td>
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score2" style="height: 90px" ></td>
+GRAB;
+                           }
+                        ?>
                     </tr>
                     <tr>
                         <td>5-15分</td>
@@ -183,7 +251,18 @@
                         <td rowspan="3">发现问题和解决问题的能力</td>
                         <td>15-20分</td>
                         <td>善于发现和解决支部的深层或隐性问题，能防微杜渐</td>
-                        <td rowspan="3"><input type="text" name="score3" style="height: 70px"></td>
+                        <?php
+                            if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score3" style="height: 90px" placeholder="$element3Score" ></td>
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score3" style="height: 90px" ></td>
+GRAB;
+                           }
+                        ?>
                     </tr>
                     <tr>
                         <td>5-15分</td>
@@ -197,7 +276,18 @@
                         <td rowspan="3">团队塑造和整合能力</td>
                         <td>15-20分</td>
                         <td>善于整合和激发员工的积极性和潜力，形成高效团队</td>
-                        <td rowspan="3"><input type="text" name="score4" style="height: 70px"></td>
+                        <?php
+                           if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score4" style="height: 90px" placeholder="$element4Score" ></td>
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score4" style="height: 90px" ></td>
+GRAB;
+                           }
+                        ?>
                     </tr>
                     <tr>
                         <td>5-15分</td>
@@ -211,7 +301,18 @@
                         <td rowspan="3">推动和组织学习的能力</td>
                         <td>15-20分</td>
                         <td>积极大力推动支部的学习和建设，职工思想觉悟和业务能力得到有效提升</td>
-                        <td rowspan="3"><input type="text" name="score5" style="height: 100px"></td>
+                        <?php
+                           if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score5" style="height: 90px" placeholder="$element5Score" ></td>
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="3"><input type="text" name="score5" style="height: 90px" ></td>
+GRAB;
+                           }
+                        ?>
                     </tr>
                     <tr>
                         <td>5-15分</td>
@@ -222,12 +323,20 @@
                         <td>支部的学习和建设乏力</td>    
                     </tr>
                     <tr>
-                        <td>总分</td>
-                        <td colspan="3"><input type="text" name="totalScore" maxlength="70" style="width: 90%"></td>  
-                    </tr>
-                    <tr>
                         <td rowspan="4">考核人的意见和建议：</td>
-                        <td rowspan="4" colspan="3"><input type="text" name="suggestion" maxlength="200" style="width: 90% ;height: 60px"></td>  
+                        <?php
+                            if($var == 1){
+                            echo <<<GRAB
+                            <td rowspan="4" colspan="3"><input type="text" name="suggestion" maxlength="200" style="width: 90% ;height: 60px" placeholder="$suggestion"></td>  
+GRAB;
+                            }
+                            else{
+                            echo <<<GRAB
+                            <td rowspan="4" colspan="3"><input type="text" name="suggestion" maxlength="200" style="width: 90% ;height: 60px"></td>    
+GRAB;
+                           }
+                        ?>
+                        
                     </tr>
                 </table>
                 
@@ -235,6 +344,7 @@
                     <div style="margin:0 auto;width:200px;">
                         <br><button class="button orange" type="submit">提交</button>
                     </div>
+
                 </form>
 
             </div>
@@ -261,8 +371,8 @@
     $score3 = !empty($_POST['score3'])?$_POST['score3']:NULL;
     $score4 = !empty($_POST['score4'])?$_POST['score4']:NULL;
     $score5 = !empty($_POST['score5'])?$_POST['score5']:NULL;
-    $totalScore = !empty($_POST['totalScore'])?$_POST['totalScore']:NULL;
     $suggestion = !empty($_POST['suggestion'])?$_POST['suggestion']:NULL;
+    $totalScore = ($score1 + $score2 + $score3 +$score4 +$score5);
 
     if (isset($score1)){
         require_once 'db_login.php';

@@ -147,6 +147,9 @@
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a
                                         href="./missionSubmit/rushMissionSubmit.php">&nbsp;新增</a>
                             </button>
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="./missionSubmit/MissionDelete.php?type=抢接任务">删除</a>
+                            </button>
 
 PRINT_BUTTON;
 
@@ -158,8 +161,10 @@ PRINT_BUTTON;
                     echo <<<PRINT_BUTTON
                         <button type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                            
                             <a href="missionList.php?type=抢接任务&branch={$branch}">&nbsp;我的任务</a>
-                        </button>    
+                        </button> 
+                        
 
 PRINT_BUTTON;
 

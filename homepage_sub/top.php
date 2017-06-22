@@ -103,6 +103,7 @@ if(isset($_SESSION['username'])){
             </li>
             <li><a href="fp_middle.php" target="mainFrame">主页</a></li>
             <li><a href="../help.html" target="mainFrame">帮助</a></li>
+            <li><a href="" target="mainFrame">修改密码</a></li>
             <li><a href="../index.php" target="_parent">退出</a></li>
         </ol>
     </div>

@@ -110,8 +110,8 @@
             $conn->query($query);
             $conn->close();
 
-            echo $type.'+++';
-            echo $branch;
+//            echo $type.'+++';
+//            echo $branch;
             switch ($type){
                 case '党员':
                     echo "<script> window.location.href='./member.php?branch=".$branch."';</script>";

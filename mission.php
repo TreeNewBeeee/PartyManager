@@ -155,6 +155,9 @@ Jump;
                                 <button type="button" class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="./missionSubmit/fixedMissionSubmit.php">新增</a>
                                 </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="./missionSubmit/MissionDelete.php?type=定期任务">删除</a>
+                                </button>
 Jump;
                         }
 
@@ -169,6 +172,9 @@ Jump;
                                 <button type="button" class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="./missionSubmit/assignMissionSubmit.php">新增</a>
                                 </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="./missionSubmit/MissionDelete.php?type=指定任务">删除</a>
+                                </button>
 Jump;
                         }
 
@@ -178,6 +184,9 @@ Jump;
                             echo <<<Jump
                                 <button type="button" class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="./missionSubmit/shinningMissionSubmit.php">新增</a>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="./missionSubmit/MissionDelete.php?type=亮点工作">删除</a>
                                 </button>
 Jump;
                         }

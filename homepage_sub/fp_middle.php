@@ -234,7 +234,55 @@ MISSION;
 
               </ul>
           </td>
-          <td>TODO something...</td>
+          <td>
+              <ul>
+                  <?php
+                  require_once '../db_login.php';
+                  $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+                  if ($conn->connect_error) die($conn->connect_error);
+                  mysqli_set_charset($conn, 'utf8');
+
+                  $query = "SELECT * FROM `shiningmission` WHERE 1 ORDER BY `id` DESC";
+                  $result = $conn->query($query);
+                  if (!$result) die($conn->connect_error);
+
+                  $index = 1;
+                  while ($rows = $result->fetch_array() and $index <= 4){   // 只显示4行
+
+//                          echo $rows['title'];
+                      echo <<<MISSION
+                            <li>
+                                <div>
+                                    <div align="left">
+                                        <a href="../homepageView.php?title={$rows['title']}&type=shiningmission">{$rows['title']}</a>
+                                    </div>
+                                    <div align="right">
+                                        {$rows['timeLimit']}
+                                    </div>
+                                    
+                                </div>
+                            
+                            </li>
+
+
+MISSION;
+
+                      $index++;
+
+
+                  }
+
+                  $result->close();
+                  $conn->close();
+                  ?>
+
+
+
+
+
+
+              </ul>
+          </td>
         </tr>
       </table>
 

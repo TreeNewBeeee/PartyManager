@@ -339,11 +339,40 @@ PRINTFORM;
 
 PRINTFORM;
                     break;
-                case '一句话新闻':
-
-                    break;
                 case '政务信息':
+                    echo <<<PRINTFORM
+                    <div class="row">
+                            <div class="col-xs-4">
+                                政务标题：<input type="text" name="title">
+                            </div>
+            
+                        </div>
+                        <br>
+                        
+                        <div class="row">
+                            <div class="col-xs-4">
+                                文章作者：<input type="text" name="writter">
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <div class="row">
+                            <div class="col-xs-4">
+                                刊登时间：<input type="date" name="publishTime">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                附件：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="file" id="file"/>
+                            </div>
+                        </div>
+            
+                        <input type="hidden" name="type" value="{$type}"/>
+                        <input type="hidden" name="branch" value="{$branch}"/>
+                        <input type="hidden" name="magazing" value="已发表"/>
 
+PRINTFORM;
                     break;
 
             }

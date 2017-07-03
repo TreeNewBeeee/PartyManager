@@ -71,11 +71,13 @@ if (isset($_POST['type'])){
                 $conn->query($query);
                 echo "<script> window.location.href='./union.php';</script>";
                 break;
-            case '一句话新闻':
-
-                break;
             case '政务信息':
-
+                $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
+                          `writter`, `publishTime`, `file`, `type`, `year`) 
+                          VALUES (NULL ,'".$branch."' ,'".$publisher."','".$title."','".$magazing."',
+                          '".$writter."','".$publishTime."','".$path.$filename."','".$type."', '".date("Y")."')";
+                $conn->query($query);
+                echo "<script> window.location.href='./affairsInfo.php';</script>";
                 break;
 
         }

@@ -136,8 +136,11 @@
                     $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
-
-                    $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '积极分子'";
+                    if ($branch == '中心') {
+                        $query = "select * FROM person WHERE `type` = '积极分子'";
+                    } else {
+                        $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '积极分子'";
+                    }
                     $result = $conn->query($query);
                     if (!$result) die($conn->connect_error);
 

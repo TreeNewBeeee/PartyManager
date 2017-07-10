@@ -135,7 +135,11 @@
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
 
-                    $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '预备党员'";
+                    if ($branch == '中心'){
+                        $query = "select * FROM person WHERE `type` = '预备党员'";
+                    }else {
+                        $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '预备党员'";
+                    }
                     $result = $conn->query($query);
                     if (!$result) die($conn->connect_error);
 

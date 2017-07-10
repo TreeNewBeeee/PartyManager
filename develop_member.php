@@ -15,18 +15,14 @@
     <style type="text/css">
 
 
-
         #content {
             float: center;
             margin-left: 20px;
             margin-right: 20px;
         }
 
-
-
         table {
 
-           
             border-collapse: separate;
             *border-collapse: collapse; /* IE7 and lower */
             border-spacing: 0;
@@ -34,54 +30,52 @@
 
         tbody tr:hover {
 
-           background: linear-gradient(#fff,#ffdcb9);
+            background: linear-gradient(#fff, #ffdcb9);
 
         }
 
-
         th {
-            
+
             padding: 10px;
             text-align: center;
             background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
+            background: -ms-linear-gradient(top, #fff, #ffdcb9); /* IE 10 */
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9)); /* Safari 4-5, Chrome 1-9*/
+            background: -webkit-linear-gradient(top, #fff, #ffdcb9); /*Safari5.1 Chrome 10+*/
+            background: -o-linear-gradient(top, #fff, #ffdcb9); /*Opera 11.10+*/
         }
 
         td {
-            
+
             text-align: center;
-           
 
         }
-          
-        th:first-child {  
-          
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             border-radius: 0 6px 0 0;  
-          
-        }  
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
+
+        th:first-child {
+
+            border-radius: 6px 0 0 0;
+
+        }
+
+        th:last-child {
+
+            border-radius: 0 6px 0 0;
+
+        }
+
+        tr:last-child td:first-child {
+
+            border-radius: 0 0 0 6px;
+
+        }
+
+        tr:last-child td:last-child {
+
+            border-radius: 0 0 6px 0;
+
+        }
 
 
     </style>
@@ -102,7 +96,8 @@
                 ?>
 
                 <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="person_create.php?branch=<?php echo $branch?>&type=发展对象">新增</a>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a
+                            href="person_create.php?branch=<?php echo $branch ?>&type=发展对象">新增</a>
                 </button>
 
 
@@ -136,8 +131,11 @@
                     $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
-
-                    $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '发展对象'";
+                    if ($branch == '中心') {
+                        $query = "select * FROM person WHERE `type` = '发展对象'";
+                    } else {
+                        $query = "select * FROM person WHERE `branch` = '" . $branch . "' AND `type` = '发展对象'";
+                    }
                     $result = $conn->query($query);
                     if (!$result) die($conn->connect_error);
 

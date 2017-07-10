@@ -109,12 +109,12 @@
                 性别：男<input type="radio" name="gen"value="男">
                 女<input type="radio" name="gen"value="女">
                 籍贯：<input tyclass="col-md-12"pe="text" name="native">
-                出生年月：<input type="text" name="birth">
+                出生年月：<input type="date" name="birth">
                 <br>
                 <br>
                 备注：<input type="text" name="remark">
                 户口所在地：<input type="text" name="household">
-                入职时间：<input type="text" name="workTime">
+                入职时间：<input type="date" name="workTime">
                 <br>
                 <br>
                 部门岗位：<input type="text" name="sector">
@@ -146,7 +146,7 @@
                 <br>
                 <br>毕业院校：<input type="text" name="school">
                 所学专业：<input type="text" name="major">
-                毕业时间：<input type="text" name="graduationTime">
+                毕业时间：<input type="date" name="graduationTime">
                 <br>
                 <br>
                 身份证号：<input type="text" name="idCard">
@@ -154,24 +154,24 @@
 <!--                人员状态：<input type="text" name="ryzt">-->
                 <br>
                 <br>
-                申请入党日期：<input type="text" name="applicationTime">
-                列为积极分子日期：<input type="text" name="activistTime">
+                申请入党日期：<input type="date" name="applicationTime">
+                列为积极分子日期：<input type="date" name="activistTime">
                 <br>
                 <br>
-                列为发展对象日期：<input type="text" name="developmentTime">
+                列为发展对象日期：<input type="date" name="developmentTime">
                 培养联系人：<input type="text" name="trainner">
                 <br>
                 <br>
                 入党介绍人：<input type="text" name="introducer">
-                支部大会通过时间：<input type="text" name="agreeTime">
+                支部大会通过时间：<input type="date" name="agreeTime">
 <!--                进入空管局党委时间：<input type="text" name="jrkgjdwsj">-->
                 <br>
                 <br>
-                上级批准预备时间：<input type="text" name="probationaryTime">
-                上级批准转正时间：<input type="text" name="preregularTime">
+                上级批准预备时间：<input type="date" name="probationaryTime">
+                上级批准转正时间：<input type="date" name="preregularTime">
                 <br>
                 <br>
-                预备转正日期：<input type="text" name="regularTime">
+                预备转正日期：<input type="date" name="regularTime">
 
                 <br>
                 <div style="margin:0 auto;width:200px;">
@@ -211,18 +211,18 @@
     $eduBackground = !empty($_POST['eduBackground'])?$_POST['eduBackground']:NULL;
     $school = !empty($_POST['school'])?$_POST['school']:NULL;
     $major = !empty($_POST['major'])?$_POST['major']:NULL;
-    $graduationTime = !empty($_POST['graduationTime'])?$_POST['graduationTime']:'2000-01-01';
+    $graduationTime = !empty($_POST['graduationTime'])?$_POST['graduationTime']:NULL;
     $idCard = !empty($_POST['idCard'])?$_POST['idCard']:NULL;
     $cell = !empty($_POST['cell'])?$_POST['cell']:NULL;
-    $applicationTime = !empty($_POST['applicationTime'])?$_POST['applicationTime']:'2000-01-01';
-    $activistTime = !empty($_POST['activistTime'])?$_POST['activistTime']:'2000-01-01';
-    $developmentTime = !empty($_POST['developmentTime'])?$_POST['developmentTime']:'2000-01-01';
+    $applicationTime = !empty($_POST['applicationTime'])?$_POST['applicationTime']:NULL;
+    $activistTime = !empty($_POST['activistTime'])?$_POST['activistTime']:NULL;
+    $developmentTime = !empty($_POST['developmentTime'])?$_POST['developmentTime']:NULL;
     $trainner = !empty($_POST['trainner'])?$_POST['trainner']:NULL;
     $introducer = !empty($_POST['introducer'])?$_POST['introducer']:NULL;
-    $agreeTime = !empty($_POST['agreeTime'])?$_POST['agreeTime']:'2000-01-01';
-    $probationaryTime = !empty($_POST['probationaryTime'])?$_POST['probationaryTime']:'2000-01-010';
-    $preregularTime = !empty($_POST['preregularTime'])?$_POST['preregularTime']:'2000-01-01';
-    $regularTime = !empty($_POST['regularTime'])?$_POST['regularTime']:'2000-01-01';
+    $agreeTime = !empty($_POST['agreeTime'])?$_POST['agreeTime']:NULL;
+    $probationaryTime = !empty($_POST['probationaryTime'])?$_POST['probationaryTime']:NULL;
+    $preregularTime = !empty($_POST['preregularTime'])?$_POST['preregularTime']:NULL;
+    $regularTime = !empty($_POST['regularTime'])?$_POST['regularTime']:NULL;
 
 
 //    echo $name,$gen,$native,$birth,$remark,$household,$workTime,$sector,$position,$techTitle,$eduBackground,$school;
@@ -250,6 +250,50 @@
                '" . $probationaryTime . "', '" . $preregularTime . "', '" . $regularTime . "', '99', '123456')";
         $conn->query($query);
         $conn->close();
+
+        switch ($type){
+            case '党员':
+                echo <<<JUMP
+            <script language="JavaScript">
+                   alert("新增{$type}成功");
+                   self.location='./member.php?branch={$branch}';     
+            </script>
+JUMP;
+                break;
+            case '预备党员':
+                echo <<<JUMP
+            <script language="JavaScript">
+                   alert("新增{$type}成功");
+                   self.location='./pre_member.php?branch={$branch}';     
+            </script>
+JUMP;
+                break;
+            case '发展对象':
+                echo <<<JUMP
+            <script language="JavaScript">
+                   alert("新增{$type}成功");
+                   self.location='./develop_member.php?branch={$branch}';     
+            </script>
+JUMP;
+                break;
+            case '积极分子':
+                echo <<<JUMP
+            <script language="JavaScript">
+                   alert("新增{$type}成功");
+                   self.location='./active_member.php?branch={$branch}';     
+            </script>
+JUMP;
+                break;
+            case '申请入党':
+                echo <<<JUMP
+            <script language="JavaScript">
+                   alert("新增{$type}成功");
+                   self.location='./application_member.php?branch={$branch}';     
+            </script>
+JUMP;
+                break;
+
+        }
     }
 
 

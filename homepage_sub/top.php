@@ -7,25 +7,14 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-treeview.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
     <!-- Required Javascript -->
-    <script src="../js/jquery-3.1.1.js"></script>
+    <!--<script src="../js/jquery-3.1.1.js"></script>-->
+    <script src="../js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/bootstrap-treeview.min.js"></script>
 
     <style type="text/css">
         
-       #header{
-            padding-top: 27px ;
-            text-align: right;
-
-       }
-
-        .headerimg {
-            background-image: url('../images/background.jpg');
-            background-size: 100% ;
-            background-repeat:no-repeat;
-            background-attachment:fixed; 
-
-        }
 
         table {
 
@@ -48,10 +37,17 @@
         }
 
         .breadcrumb {
-            padding: 8px 135px;
+            /*padding: 8px 135px;*/
             list-style: none;
             background-color: transparent;
             border-radius: 2px;
+            }
+          .head-title{
+		    font-size: 28px;
+		    color: #FFFFFF;
+		    text-shadow: 0 1px 1px #AE0000;
+          }
+          
     </style>
 </head>
 <?php
@@ -75,10 +71,16 @@ if(isset($_SESSION['username'])){
 <body>
 
 <div id="container">
+	
+    <div id="header" class="headerimg clearfix">
+		<div class="header-l">
 
-    <div id="header" class="headerimg">
-        <ol class="breadcrumb">
-            <li><a href="../person_detail.php?name=<?php echo $username ?>" target="mainFrame"><?php echo $username ?></a> &nbsp;&nbsp;欢迎您</li>
+    			技保中心党建管理执行考核系统
+
+		</div>
+       	<div class="header-r">
+       		 <ul>
+            <li><a href="../person_detail.php?name=<?php echo $username ?>" target="mainFrame"><i class="icon-user"></i><?php echo $username ?></a> &nbsp;&nbsp;欢迎您</li>
             <?php
 //            if ($authorityCode == 1 or $authorityCode == 0){     // 此行仅供测试使用
             if ($authorityCode == 1){
@@ -99,13 +101,13 @@ if(isset($_SESSION['username'])){
 
             ?>
             <li>
-                <a href="../newMSG.php?branch=<?php echo $branch?>" target="mainFrame">新消息 <span class="badge"><?php echo $msgNum?></span></a>
+                <a href="../newMSG.php?branch=<?php echo $branch?>" target="mainFrame"><i class="icon-new"></i>新消息 <span class="badge new-badge"><?php echo $msgNum?></span></a>
             </li>
-            <li><a href="fp_middle.php" target="mainFrame">主页</a></li>
-            <li><a href="../help.html" target="mainFrame">帮助</a></li>
-            <li><a href="../changeKey.php" target="mainFrame">修改密码</a></li>
-            <li><a href="../index.php" target="_parent">退出</a></li>
-        </ol>
+            <li><a href="../help.html" target="mainFrame"><i class="icon-help"></i>帮助</a></li>
+            <li><a href="../changeKey.php" target="mainFrame"><i class="icon-cPwd"></i>修改密码</a></li>
+            <li><a href="../index.php" target="_parent"><i class="icon-out"></i>退出</a></li>
+        </ul>
+       	</div>
     </div>
 
 

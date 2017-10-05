@@ -42,21 +42,14 @@ mysqli_set_charset($conn, 'utf8');
 $today = date("Y-m-d");
 $now = date("H:i:s");
 
-//echo $_POST['publisher'];
-//echo $_POST['title'];
-//echo $_FILES["file"]["name"];
-//echo $_POST['details'];
-//echo $_POST['zoneMax'];
-//echo $_POST['zoneMin'];
-//echo $_POST['timeLimit'];
-//echo $_POST['num'];
+
 
 
 $query = "INSERT INTO `rushmission` (`id`, `publisher`, `title`, 
               `annix`, `details`, `max`, `min`, `timeLimit`, `num`, `leftnum`) 
               VALUES (NULL, '" . $_POST['publisher'] . "', '" . $_POST['title'] . "',
-               '" . $path.$filename . "', '" . $_POST['details'] . "', '" . $_POST['zoneMax'] . "',
-                '" . $_POST['zoneMin'] . "', '" . $_POST['timeLimit'] . "', '" . $_POST['num'] . "',
+               '" . $path.$filename . "', '" . $_POST['details'] . "', NULL,
+                NULL, '" . $_POST['timeLimit'] . "', '" . $_POST['num'] . "',
                  '" . $_POST['num'] . "');";
 
 $conn->query($query);

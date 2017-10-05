@@ -3,16 +3,19 @@
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	color: #ffffff;  <!--页面背景字体颜色-->
+	color: #414552;;  <!--页面背景字体颜色-->
 	outline: 0
 }
 
 .jquery-accordion-menu {
-	min-width: 260px;
+	/*min-width: 220px;*/
 	float: left;
 	position: relative;
 	box-shadow: 0 0 0 #333; <!--列表阴影设置-->
 	outline: 0
+}
+.jquery-accordion-menu  a:hover{
+	background: #F5EAEA !important;
 }
 
 .jquery-accordion-menu .jquery-accordion-menu-footer,.jquery-accordion-menu .jquery-accordion-menu-header {
@@ -44,9 +47,9 @@
 	padding: 14px 22px;
 	float: left;
 	text-decoration: none;
-	color: #f0f0f0;
-	font-size: 13px;
-	background: #575757;  <!--一级菜单背景颜色-->
+	color: #414552;
+	font-size: 14px;
+	background: #f2f2f2;  <!--一级菜单背景颜色-->
 	white-space: nowrap;
 	position: relative;
 	overflow: hidden;
@@ -57,13 +60,19 @@
 }
 
 .jquery-accordion-menu>ul>li.active>a,.jquery-accordion-menu>ul>li:hover>a {
-	color: #fff;
-	background: #3b424d
+	color: #D54343;
+	/*background: #F5EAEA;*/
 	<!--一级菜单悬停颜色-->
 }
-
+.jquery-accordion-menu>ul>li{
+	border-bottom: 1px solid #ccc;
+}
+.jquery-accordion-menu>ul>li>ul>li{
+	border-top: 1px dashed #ddd;
+	
+}
 .jquery-accordion-menu>ul>li>a {
-	border-bottom: solid 1px #3b424d <!--一级菜单线条颜色-->
+	<!--一级菜单线条颜色-->
 }
 
 .jquery-accordion-menu ul li a i {
@@ -111,33 +120,42 @@
 .jquery-accordion-menu ul ul.submenu li a {
 	width: 100%;
 	float: left;
-	font-size: 11px;
-	background: #404040;   <!-- 二级菜单背景颜色-->
+	font-size: 14px;
+	background: #fefefe;   <!-- 二级菜单背景颜色-->
 	border-top: none;
 	position: relative;
 	border-left: solid 6px transparent;
 	-o-transition: border .2s linear;
 	-moz-transition: border .2s linear;
 	-webkit-transition: border .2s linear;
-	transition: border .2s linear
+	transition: border .2s linear;
+	padding: 10px 0;
 }
 
 .jquery-accordion-menu ul ul.submenu li:hover>a {
-	border-left-color: #414956
+	/*border-left-color: #414956*/
+	/*background-color: #F5EAEA;*/
+	color: #D54343;
 }
 
 .jquery-accordion-menu ul ul.submenu>li>a {
-	padding-left: 30px;
-	border-bottom: solid 1px #3B3B3B <!-- 二级菜单线条颜色>
+	padding-left: 24px;
+
+	 <!-- 二级菜单线条颜色>
 
 }
 
 .jquery-accordion-menu ul ul.submenu>li>ul.submenu>li>a {
-	padding-left: 45px
+	padding: 6px 0;
+	padding-left: 45px;
+	font-size: 12px;
 }
 
 .jquery-accordion-menu ul ul.submenu>li>ul.submenu>li>ul.submenu>li>a {
-	padding-left: 60px
+	    padding: 5px 0;
+	padding-left: 60px;
+	    border-bottom: 1px solid #f2f2f2;
+	    font-size: 12px;
 }
 
 .jquery-accordion-menu ul li .jquery-accordion-menu-label,.jquery-accordion-menu ul ul.submenu li .jquery-accordion-menu-label {
@@ -298,3 +316,12 @@
 .black.jquery-accordion-menu ul ul.submenu li:hover>a {
 	border-left-color: #222
 }
+/*.jquery-accordion-menu ul ul.submenu>li>ul.submenu>li>a>span.left-border{
+	display: inline-block;
+	padding: ;
+	border: 1px solid black;
+	
+}
+.jquery-accordion-menu ul ul.submenu>li>ul.submenu>li>a{
+	padding: 0 22px;
+}*/

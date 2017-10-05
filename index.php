@@ -6,118 +6,73 @@
     <title>首页</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="./css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
     <!-- Required Javascript -->
-    <script src="./js/jquery-3.1.1.js"></script>
+    <!--<script src="./js/jquery-3.1.1.js"></script>-->
+      <script src="./js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+      <script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap-treeview.min.js"></script>
+    
 
     <style type="text/css">
-
-        .col-center-block {
-            float: none;
-            display: block;
-            margin: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #footer {
-            clear: both;
-        }
-
-        .backgroundimg {
-            background-image: url('./images/login.jpg');
-            background-size: 100%;
-            background-repeat:no-repeat;}
-			
-#background 
-{ 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #211f1f; 
-    display:none\8;
-} 
-#background .bg-photo 
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    overflow: hidden;
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    -o-background-size: cover !important;
-    background-size: cover !important;
-} 
-
-#background .bg-photo-1 
-{ 
-    background: url('./images/login.jpg') no-repeat center center;
-} 
-
-#background-ie { 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #211f1f;
-}
+	html,body{
+		height: 100%;
+	}
    </style>
 </head>
 <body>
-<div id="background" class="container">
-    <br>
-    <br>
-    <br>
-    <br>
-        <div class="bg-photo bg-photo-1" style="display: block;">
+<div class="wrap">
+	<div id="background" class="container">
+		<div class="login-bg"></div>
+        <div class="login layui-form" style="display: block;">
 
-            <div class="row">
+			<p class="head-title">技保中心党建管理执行考核系统</p>
+				
                 <form class="form-inline" method="post">
-                    <div class="col-xs-4 col-md-2 col-center-block">
+                    <div class="col-center-block login-form">
                         <div class="row">
-
-                            <div class="form-group">
-                                <label for="exampleInputName2">用户名</label><br><input type="text" class="form-control" id="exampleInputName2" name="username">
+                            <div class="form-group login-input">
+					<i class="login-user"></i>
+                                <input type="text" class="form-control icon-username" id="exampleInputName2" name="username" placeholder="用户名" autocomplete="off">
                             </div>
 
                         </div>
+                        <input type="number" style="display: none;"/>
                         <div class="row">
-
-                            <div class="form-group">
-                                <label for="exampleInputPassword3">密码</label><br><input type="password" class="form-control" id="exampleInputPassword3" name="password">
+                            <div class="form-group login-input">
+					<i class="login-pwd"></i>
+                               <input type="password" class="form-control icon-pwd" id="exampleInputPassword3" name="password" placeholder="密码" autocomplete="off">
                             </div>
 
                         </div>
-
-                        <br>
-                        <div class="form-group">
-
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> 记住密码
-                                </label>
-                            </div>
-                            &nbsp;&nbsp;
-                            <button type="submit" class="btn btn-success">&nbsp;&nbsp;登录&nbsp;&nbsp;</button>
+                     	<div class="row">
+                     		   <div class="form-group remb-pwd">
+                                  <input type="checkbox"> <label>记住密码</label>
+                           </div>
+                     	</div>
+						<div class="row">
+					<div class="form-group submit">
+					<input type="submit" value="确认登录" />
+						</div>
+						</div>
+                            <!--<button type="submit" class="btn btn-success">&nbsp;&nbsp;登录&nbsp;&nbsp;</button>-->
                         </div>
                     </div>
                 </form>
-            </div>
+
         </div>
+</div>
 </div>
 
 
 </body>
 </html>
-
+<script type="text/javascript">
+			layui.use("form",function(){
+			var form = layui.form()
+		})
+</script>
 <?php
     if (!isset($_SESSION['username'])){
         session_start();
@@ -125,6 +80,8 @@
 
     $pswd = isset($_POST['password']) ? $_POST['password'] : NULL;    // 用户输入用户名
     $username = isset($_POST["username"]) ? $_POST["username"] : NULL;// 用户输出用户名
+
+//echo $pswd,$username;
     $_SESSION['username'] = $username;                              // 将用户名session
 //    $_SESSION['branch'] = isset($_POST["branch"]) ? $_POST["branch"] : NULL;
 

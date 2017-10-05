@@ -4,6 +4,8 @@
  * User: TreeNewBeee
  * Date: 2017-03-28
  * Time: 18:27
+ *
+ * Modified: 2017-09-05
  */
 
     session_start();
@@ -18,7 +20,7 @@
     $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取支部名称
     $type = isset($_GET['type']) ? $_GET['type'] : NULL;    // 获取任务类型
 
-    echo $title,$branch;
+//    echo $title,$branch;
 
     if ($_FILES['file']['name'] != '') {
         if ($_FILES['file']['error'] > 0) {
@@ -29,9 +31,9 @@
             } else {
                 move_uploaded_file($_FILES["file"]["tmp_name"],
                     "./Files/" . iconv('utf-8', 'gb2312', $_FILES["file"]["name"]));
-                echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
-                echo "类型: " . $_FILES["file"]["type"] . "<br />";
-                echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+//                echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
+//                echo "类型: " . $_FILES["file"]["type"] . "<br />";
+//                echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
                 //            echo "<script>alert('上传成功！');</script>";
             }
 
@@ -57,6 +59,7 @@
                    '".$type."', '已上传', '未处理');";
             $conn->query($query);
             $conn->close();
+            echo "<script> window.location.href='missionList.php?branch={$branch}&type={$type}';</script>";
         }
     } else {
         echo "<script>alert('请上传文件！');</script>";

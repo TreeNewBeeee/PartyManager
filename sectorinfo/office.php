@@ -143,8 +143,8 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         <hr>
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-default" href="../programCreate.php?branch=<?php echo $branch?>" role="button">新增支部重点项目</a>
-                <a class="btn btn-default" href="../honorCreate.php?branch=<?php echo $branch?>" role="button">新增支部荣誉</a>
+                <a class="btn btn-default" href="./programCreate.php?branch=<?php echo $branch?>&type=重点项目" role="button">新增支部重点项目</a>
+                <a class="btn btn-default" href="./programCreate.php?branch=<?php echo $branch?>&type=荣誉" role="button">新增支部荣誉</a>
             </div>
 
         </div>

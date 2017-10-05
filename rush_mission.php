@@ -8,106 +8,24 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="css/main.css"/>
     <!-- Required Javascript -->
-    <script src="./js/jquery-3.1.1.js"></script>
+    <!--<script src="./js/jquery-3.1.1.js"></script>-->
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap-treeview.min.js"></script>
 
     <style type="text/css">
-
-
-        #content {
-            float: center;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
-        table {
-
-           
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 0;
-        }
-
-        tbody tr:hover {
-
-           background: linear-gradient(#fff,#ffdcb9);
-
-        }
-
-
-        th {
-            
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-        }
-
-        td {
-            
-            text-align: center;
-           
-
-        }
-          
-        th:first-child {  
-          
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             border-radius: 0 6px 0 0;  
-          
-        }  
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
-
-
-        a:link {
-            color: #FF0000;
-            text-decoration: underline;
-        }
-
-        /*a:visited {*/
-            /*color: #00FF00;*/
-            /*text-decoration: none;*/
-        /*}*/
-
-        a:hover {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        a:active {
-            color: #FFFFFF;
-            text-decoration: none;
-        }
+.top-title{
+	padding: 0;
+}
 
     </style>
 </head>
 <body>
-
+	<div class="new-wrap">
 <div id="container">
 
-    <div id="content">
+    <div id="content" class="member">
 
         <?php
 
@@ -135,21 +53,28 @@
 
 
         ?>
+			<div class="top-title">
+			<p>
+				<span class="icon-comm">费</span>
+				<span class="top-t"><?php echo $type ?></span>
+			</p>
+		</div>
 
-        <h3><i class="fa fa-hand-paper-o"></i>&nbsp;<?php echo $type ?></h3>
-        <hr>
         <div class="col-md-12">
             <div class="row">
+            	<div class="addbtn">
+            	
                 <?php
                     if ($authorityCode <= 1){
                         echo <<<PRINT_BUTTON
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a
-                                        href="./missionSubmit/rushMissionSubmit.php">&nbsp;新增</a>
-                            </button>
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="./missionSubmit/MissionDelete.php?type=抢接任务">删除</a>
-                            </button>
+                        	
+                        	                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add"></i><a href="./missionSubmit/rushMissionSubmit.php">新增</a>
+                        </span>
+                                                	                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-dele"></i><a href="./missionSubmit/MissionDelete.php?type=抢接任务">删除</a>
+                        </span>
+
 
 PRINT_BUTTON;
 
@@ -159,13 +84,9 @@ PRINT_BUTTON;
                 <?php
                 if ($_SESSION['authorityCode'] <= 20){
                     echo <<<PRINT_BUTTON
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                            
-                            <a href="missionList.php?type=抢接任务&branch={$branch}">&nbsp;我的任务</a>
-                        </button> 
-                        
-
+                    	 <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-renw"></i><a href="missionList.php?type=抢接任务&branch={$branch}">我的任务</a>
+                      </span>
 PRINT_BUTTON;
 
                 }
@@ -180,14 +101,15 @@ PRINT_BUTTON;
                 <!--                </button>-->
 
             </div>
+            </div>
         </div>
 
-        <div class="row">
+        <div class="row memberTable">
             <div class="col-md-12">
-                <hr>
 
-                <table class="table table-condensed" align="center">
-                    <tr class="warning">
+
+                <table class="table" align="center">
+                    <tr class="thhead">
                         <th width="10%">序号</th>
                         <th width="60%">任务名称</th>
                         <th width="15%">任务个数</th>
@@ -208,6 +130,7 @@ PRINT_BUTTON;
                     $index = 1;
                     while ($mission = $result->fetch_array()){
                         echo <<<TABLE
+                    <tr class="ttd">
                         <td>$index</td>
                         <td><a href = "missionGrab.php?branch={$branch}&title={$mission['title']}">{$mission['title']}</a></td>
                         <td>{$mission['num']}</td>
@@ -229,6 +152,7 @@ TABLE;
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </body>

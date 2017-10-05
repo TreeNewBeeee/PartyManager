@@ -41,6 +41,8 @@
 
     $type = isset($_GET['type']) ? $_GET['type'] : null;
     $branch = isset($_GET['branch']) ? $_GET['branch'] : null;
+    $magzing = isset($_GET['magzing']) ? $_GET['magzing'] : null;
+    $influence = isset($_GET['influence']) ? $_GET['influence'] : null;
 
     require_once '../db_login.php';
     $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -65,7 +67,8 @@
                 </tr>
                 <?php
                 $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$branch."' and
-                            `type` = '".$type."' and `year` = '".date("Y")."'";
+                            `type` = '".$type."' and `year` = '".date("Y")."' and
+                            `influence` = '".$influence."'";
                 $result = $conn->query($query);
                 $index = 1;
                 while ($rows = $result->fetch_array()){

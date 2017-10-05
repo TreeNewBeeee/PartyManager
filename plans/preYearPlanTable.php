@@ -5,7 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
     <title>年初计划</title>
+            	<style type="text/css">
+
+        	</style>
 </head>
 
 <body>
@@ -19,19 +23,15 @@
     $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
-<div class="container">
+	<div class="new-wrap">
+						<div class="top-title">
+			<p>
+				<span class="icon-comm">年</span>
+				<span class="top-t">年初计划-<?php echo $branch?></span>
+			</p>
+		</div>
 
-
-
-    <div class="row">
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-                <h3>年初计划-<?php echo $branch?></h3>
-                <hr/>
-            </div>
-
-        </div>
+    <div class="">
 
         <?php
         require_once '../db_login.php';
@@ -59,11 +59,11 @@ PRINT;
 
         ?>
 
-        <br>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <table class="table table-condensed">
-                    <tr>
+
+        <div class="memberTable new-martop">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr class="thhead">
                         <th width="10%" class="text-center">序号</th>
                         <th width="15%" class="text-center">年份</th>
                         <th class="text-center">下载</th>
@@ -80,10 +80,10 @@ PRINT;
                     $index = 1;
                     while ($row = $result->fetch_array()){
                         echo <<<PRINTTABLE
-                            <tr>
+                            <tr class="ttd">
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
-                                <td class="text-center"><a class="btn btn-default btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
+                                <td class="text-center"><a class="" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
                             </tr>
 
 PRINTTABLE;

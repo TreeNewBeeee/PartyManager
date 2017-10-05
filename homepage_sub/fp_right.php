@@ -8,8 +8,10 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">  
   <link href="../css/bootstrap.css" rel="stylesheet">
   <link href="../css/bootstrap-treeview.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/main.css"/>
   <!-- Required Javascript -->
-  <script src="../js/jquery-3.1.1.js"></script>
+  <!--<script src="../js/jquery-3.1.1.js"></script>-->
+  <script src="../js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
   <script src="../js/bootstrap-treeview.min.js"></script>
 
   <style type="text/css">  
@@ -50,7 +52,31 @@
     background-color: transparent;
     border-radius: 2px;
   }
+	ul{
+		list-style: none;
+	}
+	.ranking{
+		padding-top: 14px;
+	}
+	.rank-one{
+		padding-bottom: 14px;
+		border-bottom:1px dashed #ccc ;
+	}
+	       html, body {
+            background: #fff;
+  	height: 100%;
+            
+        }
 
+  body:after{
+	content: '';
+	height: 100%;
+	width: 1px;
+	position: fixed;
+	right: 198px;
+	top: 0;
+  	background:#AD0000;	
+  }
   </style>
 
 </head>
@@ -259,35 +285,37 @@ if (isset($_SESSION['username'])) {
  
              ?>
 
-                      <hr>
-                      <p align="center"><strong>本月排名</strong></p>
+			<div class="ranking">
+				
+                      <p class="rank-top"><i class="icon-month"></i><span>本月排名</span></p>
 
-                      <ul type="none">
-                        <li><?php echo $rankMonth[$b][0].". ".$branchRankMonth[0] ?></li>
-                        <li><?php echo $rankMonth[$b][1].". ".$branchRankMonth[1] ?></li>
-                        <li><?php echo $rankMonth[$b][2].". ".$branchRankMonth[2] ?></li>
-                        <li><?php echo $rankMonth[$b][3].". ".$branchRankMonth[3] ?></li>
-                        <li><?php echo $rankMonth[$b][4].". ".$branchRankMonth[4] ?></li>
-                        <li><?php echo $rankMonth[$b][5].". ".$branchRankMonth[5] ?></li>
-                        <li><?php echo $rankMonth[$b][6].". ".$branchRankMonth[6] ?></li>
-                        <li><?php echo $rankMonth[$b][7].". ".$branchRankMonth[7] ?></li>
-                        <li><?php echo $rankMonth[$b][8].". ".$branchRankMonth[8] ?></li>
-                        <li><?php echo $rankMonth[$b][9].". ".$branchRankMonth[9] ?></li>
+                      <ul type="none" class="rank-one">
+                        <li class="first"><span>TOP1.</span><?php echo $branchRankMonth[0] ?></a></li>
+                        <li class="second"><span>TOP2.</span><?php echo $branchRankMonth[1] ?></li>
+                        <li class="third"><span>TOP3.</span><?php echo $branchRankMonth[2] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][3]."<span class='icon-dian'>.</span>".$branchRankMonth[3] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][4]."<span class='icon-dian'>.</span>".$branchRankMonth[4] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][5]."<span class='icon-dian'>.</span>".$branchRankMonth[5] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][6]."<span class='icon-dian'>.</span>".$branchRankMonth[6] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][7]."<span class='icon-dian'>.</span>".$branchRankMonth[7] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][8]."<span class='icon-dian'>.</span>".$branchRankMonth[8] ?></li>
+                        <li class="list-item"><?php echo $rankMonth[$b][9]."<span class='icon-dian'>.</span>".$branchRankMonth[9] ?></li>
                       </ul>
-                      <hr>
-                      <p align="center"><strong>本年排名</strong></p>
+
+                      <p class="rank-top"><i class="icon-year"></i><span>本年排名</span></p>
                       <ul type="none">
-                        <li><?php echo $rankYear[0].". ".$branchRankYear[0] ?></li>
-                        <li><?php echo $rankYear[1].". ".$branchRankYear[1] ?></li>
-                        <li><?php echo $rankYear[2].". ".$branchRankYear[2] ?></li>
-                        <li><?php echo $rankYear[3].". ".$branchRankYear[3] ?></li>
-                        <li><?php echo $rankYear[4].". ".$branchRankYear[4] ?></li>
-                        <li><?php echo $rankYear[5].". ".$branchRankYear[5] ?></li>
-                        <li><?php echo $rankYear[6].". ".$branchRankYear[6] ?></li>
-                        <li><?php echo $rankYear[7].". ".$branchRankYear[7] ?></li>
-                        <li><?php echo $rankYear[8].". ".$branchRankYear[8] ?></li>
-                        <li><?php echo $rankYear[9].". ".$branchRankYear[9] ?></li>
+                        <li class="first"><span>TOP1.</span><?php echo $branchRankYear[0] ?></li>
+                        <li class="second"><span>TOP2.</span><?php echo $branchRankYear[1] ?></li>
+                        <li class="third"><span>TOP3.</span><?php echo $branchRankYear[2] ?></li>
+                        <li class="list-item"><?php echo $rankYear[3].". ".$branchRankYear[3] ?></li>
+                        <li class="list-item"><?php echo $rankYear[4].". ".$branchRankYear[4] ?></li>
+                        <li class="list-item"><?php echo $rankYear[5].". ".$branchRankYear[5] ?></li>
+                        <li class="list-item"><?php echo $rankYear[6].". ".$branchRankYear[6] ?></li>
+                        <li class="list-item"><?php echo $rankYear[7].". ".$branchRankYear[7] ?></li>
+                        <li class="list-item"><?php echo $rankYear[8].". ".$branchRankYear[8] ?></li>
+                        <li class="list-item"><?php echo $rankYear[9].". ".$branchRankYear[9] ?></li>
                       </ul>
+			</div>
 
      
 

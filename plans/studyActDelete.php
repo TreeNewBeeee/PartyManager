@@ -14,6 +14,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         <link href="../css/bootstrap.css" rel="stylesheet">
+        	        	<style type="text/css">
+
+        	</style>
         <title></title>
     </head>
 
@@ -36,7 +39,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h2>删除“两学一做”开展情况-<?php echo $branch?></h2>
+                    <h2>删除基础规范类工作-<?php echo $branch?></h2>
                     <hr/>
                 </div>
 
@@ -112,7 +115,7 @@ if (isset($_POST['year'])){
     if ($conn->connect_error) die($conn->connect_error);
     mysqli_set_charset($conn, 'utf8');
 
-    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `year` = '".$_POST['year']."' AND `month` = '".$_POST['month']."' AND `type` = '两学一做'";
+    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `year` = '".$_POST['year']."' AND `month` = '".$_POST['month']."' AND `type` = '基础规范'";
     $result = $conn->query($query);
     $row = $result->fetch_array();
     $filename = $row['fileName'];
@@ -133,7 +136,7 @@ if (isset($_POST['year'])){
     // 更新数据库
 //    echo $_POST['year'];
 //    echo $_POST['month'];
-    $query = "DELETE FROM `plans` WHERE `branch` = '".$branch."' AND `year` = '".$_POST['year']."' AND `month` = '".$_POST['month']."' AND `type` = '两学一做'";
+    $query = "DELETE FROM `plans` WHERE `branch` = '".$branch."' AND `year` = '".$_POST['year']."' AND `month` = '".$_POST['month']."' AND `type` = '基础规范'";
     $conn->query($query);
     $conn->close();
 

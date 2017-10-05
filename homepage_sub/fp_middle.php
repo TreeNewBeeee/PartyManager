@@ -1,28 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>首页</title>
+    <title>˗ҳ</title>
   <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">  
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-treeview.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	<!-- Required Javascript -->
-	<script src="../js/jquery-3.1.1.js"></script>
+	<!--<script src="../js/jquery-3.1.1.js"></script>-->
+	<script src="../js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/bootstrap-treeview.min.js"></script>
 
-  <style type="text/css">  
-  #header {
-    text-align: right;
-    padding-top: 27px;
-  }
+  <style type="text/css"> 
 
-  .headerimg{
-    background-image: url('../images/background.jpg');
-    height: 63px;
-    width: 1360px;
-  }
-
-
+html,body{
+	height:100%
+}
+body{
+	background-image: url(../images/m_bg_boggom.jpg);
+	background-position:bottom;
+	background-repeat:no-repeat ;
+	background-size:100% ;
+}
   #content {
       float: center;
       margin-left: 50px;
@@ -37,19 +37,6 @@
 
   }
 
-  th{
-    height: 40px;
-    width: 200px;
-    padding: 10px;
-    border-radius:5px;
-    overflow:hidden
-    background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-    background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-    background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-    background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-    background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-  }
 
   td{
     height: 165px;
@@ -65,24 +52,41 @@
     list-style: none;
     background-color: transparent;
     border-radius: 2px;
+    }
+
   </style>
 
 </head>
 
 <body>
-
-   <h3>&nbsp;<i class="fa fa-bullhorn"></i>&nbsp;通知</h3>
-
-      <hr>
-     
-      <table class="table table-condensed" align="center">
-        <tr class="warning">
-          <th><i class="fa fa-calendar"></i>&nbsp;定期任务</th>
-          <th><i class="fa fa-hand-paper-o"></i>&nbsp;抢接任务</th>
+	<div class="new-wrap">
+  
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">通</span>
+				<span class="top-t">通知</span>
+			</p>
+		</div>
+     	<div class="announce">
+     		<table class="table" align="center">
+        <tr class="">
+          <th>
+          	<div class="pad-left">
+          		
+          	<i class="icon-co icon-renwu"></i><span>定期任务</span>
+          	</div>
+          </div>
+          <th>
+          	          	<div class="pad-left" style="margin-right: 0;">
+          		
+          	<i class="icon-co icon-huojian"></i><span>抢接任务</span>
+          	</div>
+          </th>
         </tr>
         <tr>
           <td>
-              <ul>
+             <div class="an-list-item">
+             	 <ul>
                   <?php
                       require_once '../db_login.php';
                       $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -94,20 +98,19 @@
                       if (!$result) die($conn->connect_error);
 
                       $index = 1;
-                      while ($rows = $result->fetch_array() and $index <= 4){   // 只显示4行
+                      while ($rows = $result->fetch_array() and $index <= 4){  // 只显示4行
 
 //                          echo $rows['title'];
                           echo <<<MISSION
-                            <li>
-                                <div>
-                                    <div align="left">
-                                        <a href="../homepageView.php?title={$rows['title']}&type=fixedmission">{$rows['title']}</a>
+                            <li class="clearfix">
+								<a href="../homepageView.php?title={$rows['title']}&type=fixedmission">
+                                    <div class="item-left">
+                                        <span>{$rows['title']}<span>
                                     </div>
-                                    <div align="right">
+                                    <div class="item-right">
                                         {$rows['timeLimit']}
                                     </div>
-                                    
-                                </div>
+                                    </a>
                             
                             </li>
 
@@ -129,9 +132,12 @@ MISSION;
 
 
               </ul>
+             </div>
           </td>
+
           <td>
-              <ul>
+             <div class="an-list-item" style="padding-right:0 ;">
+             	 <ul>
                   <?php
                   require_once '../db_login.php';
                   $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -143,20 +149,22 @@ MISSION;
                   if (!$result) die($conn->connect_error);
 
                   $index = 1;
-                  while ($rows = $result->fetch_array() and $index <= 4){   // 只显示4行
+                  while ($rows = $result->fetch_array() and $index <= 4){   // ֻДʾ4ѐ
 
 //                          echo $rows['title'];
                       echo <<<MISSION
-                            <li>
-                                <div>
-                                    <div align="left">
-                                        <a href="../homepageView.php?title={$rows['title']}&type=rushmission">{$rows['title']}</a>
+                            <li class="clearfix">
+
+                                <a href="../homepageView.php?title={$rows['title']}&type=fixedmission">
+                                    <div class="item-left">
+                                        <span>{$rows['title']}<span>
                                     </div>
-                                    <div align="right">
+                                    <div class="item-right">
                                         {$rows['timeLimit']}
                                     </div>
+                                    </a>
                                     
-                                </div>
+
                             
                             </li>
 
@@ -178,15 +186,23 @@ MISSION;
 
 
               </ul>
+             </div>
           </td>
         </tr>
-        <tr class="warning">
-          <th><i class="fa fa-send"></i>&nbsp;指定任务</th>
-          <th><i class="fa fa-star"></i>&nbsp;亮点任务</th>
+        <tr class="">
+          <th><div class="pad-left">
+          		
+          	<i class="icon-co icon-huojian"></i><span>指定任务</span>
+          	</div></th>
+          <th><div class="pad-left" style="margin-right: 0;">
+          		
+          	<i class="icon-co icon-huojian"></i><span>亮点任务</span>
+          	</div></th>
         </tr>
         <tr>
           <td>
-              <ul>
+              <div class="an-list-item">
+              	<ul>
                   <?php
                   require_once '../db_login.php';
                   $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -198,20 +214,20 @@ MISSION;
                   if (!$result) die($conn->connect_error);
 
                   $index = 1;
-                  while ($rows = $result->fetch_array() and $index <= 4){   // 只显示4行
+                  while ($rows = $result->fetch_array() and $index <= 4){   // ֻДʾ4ѐ
 
 //                          echo $rows['title'];
                       echo <<<MISSION
-                            <li>
-                                <div>
-                                    <div align="left">
+                            <li class="clearfix">
+
+                                    <div class="item-left">
                                         <a href="../homepageView.php?title={$rows['title']}&type=assignmission">{$rows['title']}</a>
                                     </div>
-                                    <div align="right">
+                                    <div class="item-right">
                                         {$rows['timeLimit']}
                                     </div>
                                     
-                                </div>
+
                             
                             </li>
 
@@ -233,9 +249,11 @@ MISSION;
 
 
               </ul>
+              </div>
           </td>
           <td>
-              <ul>
+              <div class="an-list-item" style="padding-right: 0;">
+              	<ul>
                   <?php
                   require_once '../db_login.php';
                   $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -247,20 +265,20 @@ MISSION;
                   if (!$result) die($conn->connect_error);
 
                   $index = 1;
-                  while ($rows = $result->fetch_array() and $index <= 4){   // 只显示4行
+                  while ($rows = $result->fetch_array() and $index <= 4){   // ֻДʾ4ѐ
 
 //                          echo $rows['title'];
                       echo <<<MISSION
-                            <li>
-                                <div>
-                                    <div align="left">
+                            <li class="clearfix">
+
+                                    <div class="item-left">
                                         <a href="../homepageView.php?title={$rows['title']}&type=shiningmission">{$rows['title']}</a>
                                     </div>
-                                    <div align="right">
+                                    <div class="item-right">
                                         {$rows['timeLimit']}
                                     </div>
                                     
-                                </div>
+
                             
                             </li>
 
@@ -282,8 +300,11 @@ MISSION;
 
 
               </ul>
+              </div>
           </td>
         </tr>
       </table>
 
+     	</div>
+     	</div>
 </body>

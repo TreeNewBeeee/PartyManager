@@ -4,60 +4,17 @@
 
 <head>
     <title>首页</title>
-    <link rel="stylesheet" href="./fonts/font-awesome/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link href="./css/bootstrap.css" rel="stylesheet">
-    <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-treeview.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <!-- Required Javascript -->
-    <script src="./js/jquery-3.1.1.js"></script>
-    <script src="./js/bootstrap-treeview.min.js"></script>
+    <!--<script src="./js/jquery-3.1.1.js"></script>-->
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap-treeview.min.js"></script>
 
     <style type="text/css">
-
-
-        #content {
-            float:center;
-            margin-left: 50px;
-            margin-right: 20px;
-        }
-
-        .button {
-            color: #fef4e9;
-            border: solid 1px #da7c0c;
-            background: #f78d1d;
-            background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
-            background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-            /*filter:  progid:DXImageTransform.Microsoft.gradient(start Colorstr='#faa51a', end Colorstr='#f47a20');*/
-            display: inline-block;
-            outline: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font: 14px/100% Arial, Helvetica, sans-serif;
-            padding: .5em 2em .55em;
-            text-shadow: 0 1px 1px rgba(0,0,0,.3);
-            -webkit-border-radius: .5em;
-            -moz-border-radius: .5em;
-            border-radius: .5em;
-            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-            box-shadow: 0 1px 2px rgba(0,0,0,.2);
-        }
-        .button:hover {
-            background: #f47c20;
-            background: -webkit-gradient(linear, left top, left bottom, from(#f88e11),to(#f06015));
-            background: -moz-linear-gradient(top,  #f88e11,  #f06015);
-            /*filter:  progid:DXImageTransform.Microsoft.gradient(start Colorstr='#f88e11', end Colorstr='#f06015');*/
-            text-decoration: none;
-        }
-        .button:active {
-            color: #fcd3a5;
-            background: -webkit-gradient(linear, left top, left bottom, from(#f47a20),to(#faa51a));
-            background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
-            /*filter:  progid:DXImageTransform.Microsoft.gradient(start Colorstr='#f47a20', end Colorstr='#faa51a');*/
-            position: relative;
-            top: 1px;
-        }
 
     </style>
 </head>
@@ -76,24 +33,21 @@
 
 
 ?>
-<div id="container">
-
+	<div class="new-wrap">
+			<div class="top-title">
+			<p>
+				<span class="icon-comm">删</span>
+				<span class="top-t">信息删除</span>
+			</p>
+		</div>
     <div id="content">
-        <h3><i class="fa fa-close"></i>&nbsp;信息删除</h3>
-
-        <hr>
-
-        <br>
-
         <div class="row">
-            <form action="" method="post">
-                <div style="margin:0 auto;width:350px;">
-                    姓名：<input type="text" name="name" value="<?php echo $name?>">
-                </div>
-                <br>
-                <div style="margin:0 auto;width:200px;">
-                    <br><button class="button orange">提交</button>
-                </div>
+            <form action="" method="post" class="layui-form new-form clearfix">
+            		<div class="dele-name">
+            			<span class="name">姓名</span>
+            			<span class="name-con"><?php echo $name?></span>
+            		</div>
+					<input type="submit" value="提交" class="btn dele-name"/>
             </form>
         </div>
     </div>
@@ -137,3 +91,4 @@
 </div>
 
 </body>
+</html>

@@ -8,96 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">  
 <link href="./css/bootstrap.css" rel="stylesheet">
 <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 <!-- Required Javascript -->
-<script src="./js/jquery-3.1.1.js"></script>
+<!--<script src="./js/jquery-3.1.1.js"></script>-->
+<script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
 <script src="./js/bootstrap-treeview.min.js"></script>   
+<style type="text/css">
 
-<style type="text/css">  
-
-        #content {
-            float:center;
-            margin-left: 20px;  
-            margin-right: 20px;
-        }
-
-
-
-        table {
-
-           
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 0;
-        }
-
-        tbody tr:hover {
-
-           background: linear-gradient(#fff,#ffdcb9);
-
-        }
-
-
-        th {
-            
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-        }
-
-        td {
-            
-            text-align: center;
-           
-
-        }
-          
-        th:first-child {  
-          
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             border-radius: 0 6px 0 0;  
-          
-        }  
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
-
-        a:link {
-            color:#FF0000;
-            text-decoration:underline;
-        }
-        a:visited {
-            color:#00FF00;
-            text-decoration:none;
-        }
-        a:hover {
-            color:#000000;
-            text-decoration:none;
-        }
-        a:active {
-            color:#FFFFFF;
-            text-decoration:none;
-        }
-</style>  
+</style>
 </head>  
 <body>
 
@@ -109,52 +27,55 @@ if (isset($_SESSION['username'])) {
 }
 
 ?> 
-
+	<div class="new-wrap">
+				<div class="top-title">
+			<p>
+				<span class="icon-comm">月</span>
+				<span class="top-t">月度党支部书记排名</span>
+			</p>
+		</div>
 <div id="container"> 
    
-  <div id="content">
-
-    <h3><i class="fa fa-arrow-circle-down"></i>&nbsp;月度党支部书记排名</h3>
-    <hr>   
+  <div id="content" class="member">
+  
     <div class="col-md-12">
      <div class="row">
-   
-        <button type="button" class="btn btn-default"> 
-          <span class="fa fa-times" aria-hidden="true"></span>&nbsp;否决
-        </button>   
-
+            			<div class="addbtn">
+                	<span class="btn addBtn">
+                    <a href="">否决</a>
+                </span>
+                </div>
      </div>
     </div >
       <div class="row">
-        <hr>
-      
-         <table class="table table-condensed" align="center">
-              <tr class="warning">
-                <th>计算公式（此为理论计算公式，目前采用直接累加方式）：<br />
-                  月度得分=月定期任务得分*60%*否决项权值(0/1)+月不定期任务得分*40%+亮点任务得分*20%<br />
-                </th>
-              </tr>
-         </table>
+      	<div class="measure">
+      		<p class="head-title">
+      			计算公式（此为理论计算公式，目前采用直接累加方式）：
+      		</p>
+      		<p>
+      			 月度得分=月定期任务得分*60%*否决项权值(0/1)+月不定期任务得分*40%+亮点任务得分*20%
+      		</p>
+      	</div>
       </div>
-      <div class="row">
+      <div class="row memberTable">
 
         <div class="col-md-12">
-          <hr>   
-          <table class="table table-condensed" align="center">
-            <tr class="warning">
-              <th class="active">姓名</th>
-              <th class="active">一月</th>
-              <th class="active">二月</th>
-              <th class="active">三月</th>
-              <th class="active">四月</th>
-              <th class="active">五月</th>
-              <th class="active">六月</th>
-              <th class="active">七月</th>
-              <th class="active">八月</th>
-              <th class="active">九月</th>
-              <th class="active">十月</th>
-              <th class="active">十一月</th>
-              <th class="active">十二月</th>
+
+          <table class="table" align="center">
+            <tr class="thhead">
+              <th>姓名</th>
+              <th>一月</th>
+              <th>二月</th>
+              <th>三月</th>
+              <th>四月</th>
+              <th>五月</th>
+              <th>六月</th>
+              <th>七月</th>
+              <th>八月</th>
+              <th>九月</th>
+              <th>十月</th>
+              <th>十一月</th>
+              <th>十二月</th>
             </tr>
 
             <?php
@@ -273,7 +194,7 @@ if (isset($_SESSION['username'])) {
                     //print_r($rank);
 
                     echo <<<TABLE
-                    <tr>
+                    <tr class="ttd">
                         <td>孙莹涛</td>
                         <td>第{$rank[0][0]}名</td>
                         <td>第{$rank[1][0]}名</td>
@@ -289,7 +210,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][0]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>叶庆康</td>
                         <td>第{$rank[0][1]}名</td>
                         <td>第{$rank[1][1]}名</td>
@@ -305,7 +226,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][1]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>王涛</td>
                         <td>第{$rank[0][2]}名</td>
                         <td>第{$rank[1][2]}名</td>
@@ -321,7 +242,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][2]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>王璐</td>
                         <td>第{$rank[0][3]}名</td>
                         <td>第{$rank[1][3]}名</td>
@@ -337,7 +258,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][3]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>李牧</td>
                         <td>第{$rank[0][4]}名</td>
                         <td>第{$rank[1][4]}名</td>
@@ -353,7 +274,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][4]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>付鹏亮</td>
                         <td>第{$rank[0][5]}名</td>
                         <td>第{$rank[1][5]}名</td>
@@ -369,7 +290,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][5]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>张翼起</td>
                         <td>第{$rank[0][6]}名</td>
                         <td>第{$rank[1][6]}名</td>
@@ -385,7 +306,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][6]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>王琰琳</td>
                         <td>第{$rank[0][7]}名</td>
                         <td>第{$rank[1][7]}名</td>
@@ -401,7 +322,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][7]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>韩西胜</td>
                         <td>第{$rank[0][8]}名</td>
                         <td>第{$rank[1][8]}名</td>
@@ -417,7 +338,7 @@ if (isset($_SESSION['username'])) {
                         <td>第{$rank[11][8]}名</td>
                     </tr>
 
-                    <tr>
+                    <tr class="ttd">
                         <td>孙晓勇</td>
                         <td>第{$rank[0][9]}名</td>
                         <td>第{$rank[1][9]}名</td>
@@ -438,6 +359,7 @@ TABLE;
           </table>
         </div>
       </div>
+  </div>
   </div>
 
 </div>

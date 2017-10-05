@@ -8,97 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">  
 <link href="./css/bootstrap.css" rel="stylesheet">
 <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 <!-- Required Javascript -->
-<script src="./js/jquery-3.1.1.js"></script>
-<script src="./js/bootstrap-treeview.min.js"></script>   
+<!--<script src="./js/jquery-3.1.1.js"></script>-->
+<script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/bootstrap-treeview.min.js"></script>  
+<style type="text/css">
 
-<style type="text/css">  
-
-#content {
-            float:center;
-            margin-left: 20px;  
-            margin-right: 20px;
-        }
-
-
-
-        table {
-
-           
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 0;
-        }
-
-        tbody tr:hover {
-
-           background: linear-gradient(#fff,#ffdcb9);
-
-        }
-
-
-        th {
-            
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-        }
-
-        td {
-            
-            text-align: center;
-           
-
-        }
-          
-        th:first-child {  
-          
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             border-radius: 0 6px 0 0;  
-          
-        }  
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
-
-        a:link {
-            color:#FF0000;
-            text-decoration:underline;
-        }
-        a:visited {
-            color:#00FF00;
-            text-decoration:none;
-        }
-        a:hover {
-            color:#000000;
-            text-decoration:none;
-        }
-        a:active {
-            color:#FFFFFF;
-            text-decoration:none;
-        }
-
-</style>  
+</style> 
 </head>  
 <body>
 
@@ -110,39 +27,43 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>  
-
+	<div class="new-wrap">
+				<div class="top-title">
+			<p>
+				<span class="icon-comm">年</span>
+				<span class="top-t">年度党支部书记排名</span>
+			</p>
+		</div>
 <div id="container">
    
-  <div id="content">
-
-    <h3><i class="fa fa-arrow-circle-down"></i>&nbsp;年度党支部书记排名</h3>
-    <hr>   
+  <div id="content" class="member">
       <div class="col-md-12">
        <div class="row">
          
-          <button type="button" class="btn btn-default"> 
-            <span class="fa fa-times" aria-hidden="true"></span>&nbsp;</span>否决
-          </button>
+              			<div class="addbtn">
+                	<span class="btn addBtn">
+                    <a href="">否决</a>
+                </span>
+                </div>
          
        </div>
       </div >
         <div class="row">
-          <hr>
-        
-           <table class="table table-condensed" align="center">
-                <tr class="warning">
-                  <th>计算公式（此为理论计算公式，目前采用直接累加方式）：<br />
-                     年度得分=(∑月定期任务得分/12+年度定期任务得分)*30%*否决项权值(0/1)+月不定期任务得分*40%+亮点任务得分*20%<br />
-                  </th>
-                </tr>
-           </table>
+                 	<div class="measure">
+      		<p class="head-title">
+      			计算公式（此为理论计算公式，目前采用直接累加方式）：
+      		</p>
+      		<p>
+      			   年度得分=(∑月定期任务得分/12+年度定期任务得分)*30%*否决项权值(0/1)+月不定期任务得分*40%+亮点任务得分*20%
+      		</p>
+      	</div>
         </div>
-      <div class="row">
+      <div class="row memberTable">
 
         <div class="col-md-12">
-          <hr>   
-          <table class="table table-condensed" align="center">
-              <tr class="warning">
+
+          <table class="table" align="center">
+              <tr class="thhead">
                 <th width="25%">排名</th>
                 <th width="50%">姓名</th>
                 <th width="25%">分数</th>
@@ -305,61 +226,61 @@ if (isset($_SESSION['username'])) {
                   
 
                   echo <<<TABLE
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[0]}名</td>
                     <td>{$branchRank[0]}</td>
                     <td>{$totalScore1[0]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[1]}名</td>
                     <td>{$branchRank[1]}</td>
                     <td>{$totalScore1[1]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[2]}名</td>
                     <td>{$branchRank[2]}</td>
                     <td>{$totalScore1[2]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[3]}名</td>
                     <td>{$branchRank[3]}</td>
                     <td>{$totalScore1[3]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[4]}名</td>
                     <td>{$branchRank[4]}</td>
                     <td>{$totalScore1[4]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[5]}名</td>
                     <td>{$branchRank[5]}</td>
                     <td>{$totalScore1[5]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[6]}名</td>
                     <td>{$branchRank[6]}</td>
                     <td>{$totalScore1[6]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[7]}名</td>
                     <td>{$branchRank[7]}</td>
                     <td>{$totalScore1[7]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[8]}名</td>
                     <td>{$branchRank[8]}</td>
                     <td>{$totalScore1[8]}</td>
                   </tr>
 
-                  <tr>
+                  <tr class="ttd">
                     <td>第{$rank[9]}名</td>
                     <td>{$branchRank[9]}</td>
                     <td>{$totalScore1[9]}</td>
@@ -368,6 +289,7 @@ if (isset($_SESSION['username'])) {
         </div>
       </div>
   </div>
+</div>
 </div>
 TABLE;
             ?>

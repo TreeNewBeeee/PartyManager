@@ -53,7 +53,10 @@ PRINTBUTTON;
                 <tr>
                     <th class="text-center">党支部</th>
                     <th class="text-center">外媒计划（篇）</th>
-                    <th class="text-center">已完成（篇）</th>
+                    <th class="text-center">影响力巨大的媒体（篇）</th>
+                    <th class="text-center">有重要影响力媒体（篇）</th>
+                    <th class="text-center">有影响力媒体（篇）</th>
+                    <th class="text-center">重要行业媒体（篇）</th>
                     <th class="text-center">支部上传</th>
                 </tr>
 
@@ -77,7 +80,7 @@ PRINTBUTTON;
 //                打印支部外媒刊登表格
                 for ($i = 0; $i < $index; $i++) {
                     $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$sector[$i]."' and
-                     `type` = '外媒' and `year` = '".date("Y")."'";
+                     `type` = '外媒' and `year` = '".date("Y")."' and `influence` = '影响力巨大'";
                     $result = $conn->query($query);
                     $num = $result->num_rows;
 
@@ -85,13 +88,40 @@ PRINTBUTTON;
                     <tr>
                         <td>{$sector[$i]}</td>
                         <td class="text-center">{$sectorTask[$i]}</td>
-                        <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}">{$num}</a></td>
+                        <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}&influence=影响力巨大">{$num}</a></td>
                         
 PRINTSECTOR;
+                    $result->close();
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$sector[$i]."' and
+                     `type` = '外媒' and `year` = '".date("Y")."' and `influence` = '有重要影响力'";
+                    $result = $conn->query($query);
+                    $num = $result->num_rows;
+                    echo <<<PRINT
+                        <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}&influence=有重要影响力">{$num}</a></td>
+PRINT;
+
+                    $result->close();
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$sector[$i]."' and
+                     `type` = '外媒' and `year` = '".date("Y")."' and `influence` = '有影响力'";
+                    $result = $conn->query($query);
+                    $num = $result->num_rows;
+                    echo <<<PRINT
+                        <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}&influence=有影响力">{$num}</a></td>
+PRINT;
+
+                    $result->close();
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$sector[$i]."' and
+                     `type` = '外媒' and `year` = '".date("Y")."' and `influence` = '重要行业媒体'";
+                    $result = $conn->query($query);
+                    $num = $result->num_rows;
+                    echo <<<PRINT
+                        <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}&influence=重要行业媒体">{$num}</a></td>
+PRINT;
+
 
                     if ($authorityCode == 0 or ($authorityCode == 20 and $sector[$i] == $_SESSION['branch'])) {
                         echo <<<PRINTUPDATE
-                        <td class="text-center"><a href="./updatePropaganda.php?type=外媒&branch={$sector[$i]}">上传外媒</a></td>
+                        <td class="text-center"><a href="./updateOutPropaganda.php?type=外媒&branch={$sector[$i]}">上传外媒</a></td>
                     </tr>
 PRINTUPDATE;
 

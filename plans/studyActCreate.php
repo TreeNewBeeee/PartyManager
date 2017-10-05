@@ -14,6 +14,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         <link href="../css/bootstrap.css" rel="stylesheet">
+        	        	<style type="text/css">
+
+        	</style>
         <title></title>
     </head>
 
@@ -36,7 +39,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h2>新增“两学一做”开展情况-<?php echo $branch?></h2>
+                    <h2>新增基础规范类工作-<?php echo $branch?></h2>
                     <hr/>
                 </div>
 
@@ -86,6 +89,20 @@
 
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="month">类型</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="division" name="division">
+                                            <option value="三会一课">三会一课</option>
+                                            <option value="两学一做">两学一做</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <button type="submit" class="btn btn-default">上传</button>
                     </form>
@@ -120,7 +137,7 @@ if (!is_dir($path)){
 if (isset($_POST['year'])){
     // 上传文件
     if ($_FILES['file']['name'] != '') {
-        $filename = "JB-两学一做开展情况-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
+        $filename = "JB-基础规范类工作-".date("Y-m")."-".$branch."-".$_FILES['file']['name'];    // 重命名文件
         if ($_FILES['file']['error'] > 0) {
             echo "错误状态：" . $_FILES['file']['error'];
         } else {
@@ -147,9 +164,9 @@ if (isset($_POST['year'])){
     if ($conn->connect_error) die($conn->connect_error);
     mysqli_set_charset($conn, 'utf8');
 
-    $query = "INSERT INTO `plans` (`ID`,`branch`, `year`, `month`, `season`, `fileName`, `type`) 
+    $query = "INSERT INTO `plans` (`ID`,`branch`, `year`, `month`, `season`, `fileName`, `type`, `division`) 
                   VALUES 
-                  (NULL, '".$branch."', '".$_POST['year']."', '".$_POST['month']."', NULL, '".$path.$filename."', '两学一做')";
+                  (NULL, '".$branch."', '".$_POST['year']."', '".$_POST['month']."', NULL, '".$path.$filename."', '基础规范', '".$_POST['division']."')";
     $conn->query($query);
     $conn->close();
 

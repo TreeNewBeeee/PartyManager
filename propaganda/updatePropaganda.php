@@ -156,6 +156,15 @@
 
     </style>
 
+    <script type="text/javascript">
+        if(document.getElementById('custom').checked){
+            alert("checkbox is checked");
+            document.getElementById('popmagzing').disable = true;
+        }else {
+
+        }
+    </script>
+
 </head>
 
 <body>
@@ -183,13 +192,13 @@ if (isset($_SESSION['username'])) {
             <br>
             <div class="row">
                 <div class="col-xs-4">
-                    发布人：&nbsp;&nbsp;&nbsp;<input type="text" name="publisher" value="<?php echo $username ?>" readonly="readonly">
+                    发布人：&nbsp;&nbsp;&nbsp;<input type="text" name="publisher" id="publisher" value="<?php echo $username ?>" readonly="readonly">
                 </div>
             </div>
             <br>
             <?php
             switch ($type){
-                case '外媒':
+                /*case '外媒':
                     echo <<<PRINTFORM
                     <div class="row">
                             <div class="col-xs-4">
@@ -200,7 +209,25 @@ if (isset($_SESSION['username'])) {
                         <br>
                         <div class="row">
                             <div class="col-xs-4">
-                                发表刊物：<input type="text" name="magazing">
+                                发表刊物：<select type="text" name="magazing" id="popmagzing">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="custom" id="custom">自定义发表刊物
+                                </label>
+                            </div>
+                            <div class="col-xs-4">
+                                发表刊物：<input type="text" name="magazing" id="inputmagzing">
+                                
+                            </div>
+                            <div class="col-xs-4">
+                            刊物影响：<select type="text" name="magazing" id="popinflurence">
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                        </select>
                             </div>
                         </div>
                         <br>
@@ -239,7 +266,7 @@ if (isset($_SESSION['username'])) {
 
 PRINTFORM;
 
-                    break;
+                    break;*/
                 case '内刊':
                     echo <<<PRINTFORM
                     <div class="row">

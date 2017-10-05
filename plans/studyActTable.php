@@ -15,6 +15,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+            	<style type="text/css">
+
+        	</style>
     <title></title>
 </head>
 
@@ -29,20 +33,14 @@ if (isset($_SESSION['username'])) {
 $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
-<div class="container">
-
-
-
-    <div class="row">
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-                <h3>“两学一做”开展情况-<?php echo $branch?></h3>
-                <hr/>
-            </div>
-
-        </div>
-
+	<div class="new-wrap">
+						<div class="top-title">
+			<p>
+				<span class="icon-comm">学</span>
+				<span class="top-t">基础规范类工作开展情况-<?php echo $branch?></span>
+			</p>
+		</div>
+    <div class="">
         <?php
         require_once '../db_login.php';
         $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -72,13 +70,14 @@ PRINT;
         <br>
 
 
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <table class="table table-condensed">
-                    <tr>
+        <div class="memberTable">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr class="thhead">
                         <th width="10%" class="text-center">序号</th>
                         <th width="15%" class="text-center">年份</th>
                         <th width="15%" class="text-center">月份</th>
+                        <th width="15%" class="text-center">类型</th>
                         <th class="text-center">下载</th>
                     </tr>
                     <?php
@@ -87,17 +86,18 @@ PRINT;
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
 
-                    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '两学一做'  ORDER BY `plans`.`ID` DESC";
+                    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '基础规范'  ORDER BY `plans`.`ID` DESC";
                     $result = $conn->query($query);
                     // TODO: 未完成根据时间限制查看
                     $index = 1;
                     while ($row = $result->fetch_array()){
                         echo <<<PRINTTABLE
-                            <tr>
+                            <tr class="ttd">
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
                                 <td class="text-center">{$row['month']}</td>
-                                <td class="text-center"><a class="btn btn-default btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
+                                <td class="text-center">{$row['division']}</td>
+                                <td class="text-center"><a class="btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a></td>                   
                             </tr>
 
 PRINTTABLE;

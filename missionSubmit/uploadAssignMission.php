@@ -46,14 +46,16 @@ if (!is_dir($path)){
          `details`, `max`, `min`, `timeLimit`, `office`, `communication`, `automatic`,
           `radar`, `power`, `maintain`, `commuRun`, `motor`, `navi`, `route`) 
           VALUES (NULL, '" . $_POST['publisher'] . "', '" . $_POST['title'] . "', '" . $path.$filename . "',
-           '" . $_POST['details'] . "', '" . $_POST['zoneMax'] . "', '" . $_POST['zoneMin'] . "',
+           '" . $_POST['details'] . "', NULL, NULL,
             '" . $_POST['timeLimit'] . "', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');";
     $conn->query($query);
 
     /*为每个党支部创建任务及消息*/
-    if (isset($_POST['office']) && $_POST['office'] == 'checked'){
+//    echo $_POST['office'];
+
+    if (isset($_POST['office']) && $_POST['office'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
-            `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
+            `details`, `publishTime`, `timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
             `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
              '" . $path.$filename . "', '" . $_POST['details'] . "','".$today."',
               '" . $_POST['timeLimit'] . "', NULL, '指定任务', '已发布', '0', NULL, '机关党支部', NULL);";
@@ -68,7 +70,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['commu']) && $_POST['commu'] == 'checked'){
+    if (isset($_POST['commu']) && $_POST['commu'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -85,7 +87,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['commuRun']) && $_POST['commuRun'] == 'checked'){
+    if (isset($_POST['commuRun']) && $_POST['commuRun'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`,`publishTime`, `timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -102,7 +104,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['automatic']) && $_POST['automatic'] == 'checked'){
+    if (isset($_POST['automatic']) && $_POST['automatic'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`,`publishTime`, `timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -119,7 +121,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['radar']) && $_POST['radar'] == 'checked'){
+    if (isset($_POST['radar']) && $_POST['radar'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -136,7 +138,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['navi']) && $_POST['navi'] == 'checked'){
+    if (isset($_POST['navi']) && $_POST['navi'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`,`publishTime`, `timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -153,7 +155,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['route']) && $_POST['route'] == 'checked'){
+    if (isset($_POST['route']) && $_POST['route'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -170,7 +172,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['power']) && $_POST['power'] == 'checked'){
+    if (isset($_POST['power']) && $_POST['power'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -187,7 +189,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['maintain']) && $_POST['maintain'] == 'checked'){
+    if (isset($_POST['maintain']) && $_POST['maintain'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`,`publishTime`, `timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',
@@ -204,7 +206,7 @@ if (!is_dir($path)){
         $conn->query($query);
     }
 
-    if (isset($_POST['motor']) && $_POST['motor'] == 'checked'){
+    if (isset($_POST['motor']) && $_POST['motor'] == 'on'){
         $query = "INSERT INTO `missionlog` (`id`, `title`, `publisher`, `annix`, 
                 `details`, `publishTime`,`timeLimit`, `finishTime`, `type`, `status`, `score`, `annixSubmit`, 
                 `branch`, `submitter`) VALUES (NULL, '" . $_POST['title'] . "', '" . $_POST['publisher'] . "',

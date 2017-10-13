@@ -17,6 +17,11 @@
         <link rel="stylesheet" type="text/css" href="../css/main.css"/>
         <title>三鹰选拔</title>
         <style type="text/css">
+        #content {
+            float: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
         </style>
     </head>
@@ -40,9 +45,10 @@
                 <span class="top-t">三鹰选拔-<?php echo $type?></span>
             </p>
         </div>
-
-        <div class="">
-
+<div id="container">
+        <div id="content" class="member">
+        <div class="col-md-12">
+            <div class="row">
             <?php
             require_once '../db_login.php';
             $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -55,15 +61,14 @@
 //            $row = $result->fetch_array();
             if ($_SESSION['authorityCode'] <= 1){
                 echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="./eaglesAdd.php?type={$type}" role="button">新增</a>
-                        
-                        
-                    </div>
-        
-                </div>
 
+                <div class="addbtn">
+                <span type="button" class="btn  addBtn">
+                    <i class="icon-add"></i> <a href="./eaglesAdd.php?type={$type}" role="button">新增</a>
+                </span>
+				</div>
+				       </div>
+        </div>
 PRINT;
 
             }
@@ -71,8 +76,8 @@ PRINT;
             ?>
 
 
-            <div class="memberTable new-martop">
-                <div class="col-md-12">
+            <div class="memberTable">
+                <div>
                     <table class="table">
                         <tr class="thhead">
                             <th width="10%" class="text-center">序号</th>
@@ -117,6 +122,7 @@ PRINTTABLE;
 
 
         </div>
+    </div>
     </div>
 
     </body>

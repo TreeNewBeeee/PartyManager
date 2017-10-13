@@ -8,6 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    	
     <!-- Required Javascript -->
     <script src="./js/jquery-3.1.1.js"></script>
     <script src="./js/bootstrap-treeview.min.js"></script>
@@ -16,14 +18,14 @@
 
 
 
-         #content {
+
+        #content {
             float: center;
             margin-left: 20px;
             margin-right: 20px;
         }
 
-
-
+       
         table {
 
            
@@ -32,25 +34,6 @@
             border-spacing: 0;
         }
 
-        tbody tr:hover {
-
-           background: linear-gradient(#fff,#ffdcb9);
-
-        }
-
-
-        th {
-            
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-        }
 
         td {
             
@@ -58,40 +41,21 @@
            
 
         }
-          
-        th:first-child {  
-          
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             border-radius: 0 6px 0 0;  
-          
-        }  
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
     </style>
 </head>
 <body>
-
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">预</span>
+				<span class="top-t">预备党员</span>
+			</p>
+		</div>
 <div id="container">
 
-    <div id="content">
+    <div id="content" class="member">
 
-        <h3><i class="fa fa-id-card"></i>&nbsp;预备党员</h3>
-        <hr>
         <div class="col-md-12">
             <div class="row">
                 <?php
@@ -99,20 +63,21 @@
 
                 ?>
 
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="person_create.php?branch=<?php echo $branch?>&type=预备党员">新增</a>
-                </button>
+                <div class="addbtn">
+                <span type="button" class="btn addBtn">
+                    <i class="icon-add"></i><a href="person_create.php?branch=<?php echo $branch?>&type=预备党员">新增</a>
+                </span>
+
+				</div>
 
 
             </div>
         </div>
 
-        <div class="row">
+        <div class="row memberTable">
             <div class="col-md-12">
-                <hr>
-
-                <table class="table table-condensed" align="center">
-                    <tr class="warning">
+                <table class="table" align="center">
+                    <tr class="thhead">
                         <th width="5%">序号</th>
                         <th width="10%">姓名</th>
                         <th width="20%">申请入党时间</th>
@@ -146,9 +111,9 @@
                     $index = 1;
                     while ($rows = $result->fetch_array()) {
                         echo <<<TABLE
-                        <tr>
+                        <tr class="ttd">
                         <td>$index</td>
-                        <td><a href = "person_detail.php?name={$rows['name']}&type=预备党员&branch={$branch}">{$rows['name']}</a></td>
+                        <td class='td-name'><a href = "person_detail.php?name={$rows['name']}&type=预备党员&branch={$branch}">{$rows['name']}</a></td>
                         <td>{$rows['applicationTime']}</td>
                         <td>{$rows['activistTime']}</td>
                         <td>{$rows['developmentTime']}</td>
@@ -173,6 +138,6 @@ TABLE;
         </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>

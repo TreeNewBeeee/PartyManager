@@ -62,7 +62,7 @@
                         <div class="fo-item">
                             <label for="" class="layui-form-label">工资基数</label>
                             <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="request">
+                                <input type="text" class="layui-input" name="base">
                             </div>
                         </div>
                         <!--<div class="fo-item">
@@ -111,7 +111,7 @@
     //    if (!empty($_POST['school'])) {echo 'hahahahahahah';} else {echo 'yoyoyoyoyoyo';};
 
     $name = isset($_POST['name']) ? $_POST['name'] : NULL;
-    $request = isset($_POST['request']) ? $_POST['request'] : NULL;
+    $base = isset($_POST['base']) ? $_POST['base'] : NULL;
 //    $paid = isset($_POST['paid']) ? $_POST['paid'] : NULL;
     $payYear = isset($_POST['payYear']) ? $_POST['payYear'] : NULL;
     $payMonth = isset($_POST['payMonth']) ? $_POST['payMonth'] : NULL;
@@ -124,18 +124,18 @@
         if ($conn->connect_error) die($conn->connect_error);
         mysqli_set_charset($conn, 'utf8');
 
-        if ($request <= 3000){
-            $paid = $request * 0.005;
-        }elseif ($request <= 5000){
-            $paid = $request * 0.01;
-        }elseif ($request <= 10000){
-            $paid = $request * 0.015;
+        if ($base <= 3000){
+            $request = $base * 0.005;
+        }elseif ($base <= 5000){
+            $request = $base * 0.01;
+        }elseif ($base <= 10000){
+            $request = $base * 0.015;
         }else{
-            $paid = $request * 0.02;
+            $request = $base * 0.02;
         }
 
-        $query = "INSERT INTO `payment` (`id`, `name`, `branch`, `request`, `paid`, `pay_year`, `pay_month`, `remark`) VALUES (NULL, '" . $name . "', 
-        '" . $branch . "', '" . $request . "', '" . number_format("$paid",2) . "', '" . $payYear . "','" . $payMonth . "','".$payYear."年".$payMonth."月')";
+        $query = "INSERT INTO `payment` (`id`, `name`, `branch`, `base`, `request`, `paid`, `pay_year`, `pay_month`, `remark`) VALUES (NULL, '" . $name . "', 
+        '" . $branch . "', '" . $base . "', '" . number_format("$request",2) . "',0, '" . $payYear . "','" . $payMonth . "','".$payYear."年".$payMonth."月')";
         $conn->query($query);
         $conn->close();
         echo "<script> window.location.href='./feeinfo_new.php?branch={$branch}';</script>";

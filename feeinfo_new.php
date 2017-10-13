@@ -87,13 +87,14 @@ Jump;
                             <th class="">党支部名称</th>
                             <td><?php echo $branch ?></td>
                             <th>收缴时间</th>
-                            <td width="30%">
+                            <td width="30%" class="boder-r">
                                 <form name="form" enctype="multipart/form-data" method="post" action="#"
                                       class="tab-select">
-                                    <div class="fo-item">
+                                    <div class="yearinput">
                                         <div class="layui-input-inline">
-                                            <input type="text" class="layui-input" name="year">年
+                                            <input type="text" class="layui-input" name="year">
                                         </div>
+                                        年
                                     </div>
                                     <select name="month" lay-ignore>
                                         <option value="01">
@@ -145,47 +146,73 @@ Jump;
                         <div class="col-md-12">
                             <table class="table " align="center">
                                 <tr class="thhead">
-                                    <th width="15%">序号</th>
-                                    <th width="15%">姓名</th>
+                                    <th width="10%">序号</th>
+                                    <th width="10%">姓名</th>
                                     <th width="20%">工资基数（元）</th>
                                     <th width="20%">应缴金额（元）</th>
-                                    <th >备注</th>
+                                    <th width="20%">实缴金额（元）</th>
+                                    <th>备注</th>
                                 </tr>
 
                                 <?php
                                 $year = isset($_POST['year']) ? $_POST['year'] : date("Y");
                                 $month = isset($_POST['month']) ? $_POST['month'] : date("m");
-//                                echo $year,$month;
+                                //                                echo $year,$month;
 
-                                $query = "select `payment`.`name`,`payment`.`request`, `payment`.`paid`, `payment`.`remark` 
+                                $query = "select `payment`.`name`,`payment`.`base`,`payment`.`request`, `payment`.`paid`, `payment`.`remark` 
                                           FROM `payment`,`person` 
-                                          WHERE `person`.`branch` = '".$branch."' 
-                                            AND `payment`.`pay_year` = '".$year."' 
-                                            AND `payment`.`pay_month` = '".$month."' 
+                                          WHERE `person`.`branch` = '" . $branch . "' 
+                                            AND `payment`.`pay_year` = '" . $year . "' 
+                                            AND `payment`.`pay_month` = '" . $month . "' 
                                             AND `payment`.`name` = `person`.`name`";
 
                                 $result = $conn->query($query);
                                 if (!$result) die($conn->connect_error);
 
                                 $index = 1;
-                                while ($row = $result->fetch_array()){
+                                $totalQrequest = 0;   // 应缴总额
+                                $totalPaid = 0;       // 实缴总额
+                                while ($row = $result->fetch_array()) {
                                     echo <<<TABLE
                                     <tr class='ttd'>
                                         
                                         <td>$index</td>
                                         <td>{$row['name']}</td>
+                                        <td>{$row['base']}</td>
                                         <td>{$row['request']}</td>
                                         <td>{$row['paid']}</td>
-                                        <td>{$row['remark']}</td>
+                                        <td>{$row['remark']}<span type="button" class="btn addBtn">
+                            <a href="./payFee.php?branch={$branch}&name={$row['name']}&year={$year}&month={$month}">缴费</a>
+                        </span>
+                        </td>
                                     </tr>
       
 TABLE;
+                                    $totalQrequest = $totalQrequest + $row['request'];
+                                    $totalPaid = $totalPaid + $row['paid'];
                                     $index++;
                                 }
 
 
-                                ?>
 
+
+
+                                ?>
+																<tr class="ttd">
+                                    <td>合计</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><?php echo $totalQrequest?></td>
+                                    <td><?php echo $totalPaid?></td>
+                                    <td><?php
+                                        $query = "select * from `payment` WHERE 
+                                            `branch` = '".$branch."' and `isPaid` = 0 and
+                                            `pay_year` = '".$year."' and `pay_month` = '".$month."'";
+                                        $result = $conn->query($query);
+                                        $num = $result->num_rows;
+                                        echo "本月".$num."人未缴纳党费";
+                                    ?></td>
+                                </tr>
 
                             </table>
                         </div>

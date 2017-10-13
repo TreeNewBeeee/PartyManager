@@ -14,22 +14,48 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <title>内媒宣传</title>
+        <style>
+    	
+    	       #content {
+            float: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+       
+        table {
+
+           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+
+
+        td {
+            
+            text-align: center;
+           
+
+        }
+    </style>
 </head>
 
 <body>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">内</span>
+				<span class="top-t">内媒宣传</span>
+			</p>
+		</div>
+<div id="container">
+<div id="content" class="member">
 
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-
-            <h3>内媒宣传</h3>
-            <br/>
-
-        </div>
-
-    </div>
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -57,10 +83,10 @@ PRINTBUTTON;
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable new-martop">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center">党支部</th>
                     <th class="text-center">内网</th>
                     <th class="text-center">西北空管</th>
@@ -92,7 +118,7 @@ PRINTBUTTON;
                     $num = $result->num_rows;
 
                     echo <<<PRINTSECTOR
-                    <tr>
+                    <tr class="ttd">
                         <td>{$sector[$i]}</td>
                         <td class="text-center"><a href="./propagandaDetails.php?type=内刊&magzing=内网&branch={$sector[$i]}">{$num}</a></td>
                         
@@ -131,6 +157,8 @@ PRINTEND;
             </table>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </body>

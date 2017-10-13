@@ -33,7 +33,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 
 
-    <div class="">
+    <div id="content" class="member">
 
         <?php
         require_once '../db_login.php';
@@ -46,25 +46,21 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         $row = $result->fetch_array();
         if ($row['branch'] == $branch){
             echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="monthPlanCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="monthPlanDelete.php?branch={$branch}" role="button">删除</a>
-                        <hr>
-                    </div>
-        
-                </div>
+                <div class="addbtn">
+                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add"></i><a href="monthPlanCreate.php?branch={$branch}" role="button">新增</a>
+                        </span>
+                         <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-dele"></i><a href="monthPlanDelete.php?branch={$branch}" role="button">删除</a>
+                        </span>
+               </div>
 
 PRINT;
 
         }
 
         ?>
-
-        <br>
-
-
-        <div class="memberTable">
+        <div class="row memberTable new-martop">
             <div class="col-md-12">
                 <table class="table">
                     <tr class="thhead">
@@ -89,7 +85,7 @@ PRINT;
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
                                 <td class="text-center">{$row['month']}</td>
-                                <td class="text-center"><a class="btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
+                                <td class="text-center"><a href="../Files/{$row['fileName']}" role="button">查看</a> </td>
                             </tr>
 
 PRINTTABLE;

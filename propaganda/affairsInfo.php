@@ -14,21 +14,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <title>政务信息</title>
+        <style>
+    	
+    	       #content {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+       
+        table {
+
+           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+
+
+        td {
+            
+            text-align: center;
+           
+
+        }
+    </style>
 </head>
 
 <body>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">政</span>
+				<span class="top-t">政务信息</span>
+			</p>
+		</div>
+<div id="content" class="new-martop">
 
-<div class="container">
 
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
 
-            <h3>政务信息</h3>
-            <br/>
-        </div>
 
-    </div>
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -56,10 +84,10 @@ PRINTBUTTON;
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center">党支部</th>
                     <th class="text-center">已上报</th>
                     <th class="text-center">中心采编</th>
@@ -94,7 +122,7 @@ PRINTBUTTON;
                     $num = $result->num_rows;
 
                     echo <<<PRINTSECTOR
-                    <tr>
+                    <tr class="ttd">
                         <td>{$sector[$i]}</td>
                         <td class="text-center"><a href="./affairDetails.php?type=政务信息&branch={$sector[$i]}&magzing=已发表">{$num}</a></td>
                         

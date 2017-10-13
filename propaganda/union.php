@@ -14,21 +14,36 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
     <title>工会宣传</title>
+        <style>   	
+    	#content {
+            float: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }       
+        table {           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+        td {           
+            text-align: center;          
+        }
+    </style>
 </head>
 
 <body>
-
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-
-            <h3>工会宣传</h3>
-
-        </div>
-
-    </div>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">工</span>
+				<span class="top-t">工会宣传</span>
+			</p>
+		</div>
+<div id="container">
+<div id="content" class="member">
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -41,14 +56,14 @@
     if ($authorityCode == 103 or $authorityCode == 0) {
         echo <<<PRINTBUTTON
         <div class="row">
-                <div class="col-md-4 col-md-offset-1">
-        
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="./unionPropagandaTask.php">&nbsp;工会指标编辑</a>
-                    </button>
-                </div>
-            </div>
-            <br/>
+        	<div class='col-xs-12'>
+                                        <div class="addbtn">
+                <span type="button" class="btn  addBtn">
+                    <i class="icon-add"></i><a href="./unionPropagandaTask.php">工会指标编辑</a>
+                </span>
+				</div>
+				</div>
+			</div>
 PRINTBUTTON;
 
     }
@@ -56,10 +71,10 @@ PRINTBUTTON;
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center">党支部</th>
                     <th class="text-center">工会宣传计划（篇）</th>
                     <th class="text-center">已完成（篇）</th>
@@ -91,7 +106,7 @@ PRINTBUTTON;
                     $num = $result->num_rows;
 
                     echo <<<PRINTSECTOR
-                    <tr>
+                    <tr class="ttd">
                         <td>{$sector[$i]}</td>
                         <td class="text-center">{$sectorTask[$i]}</td>
                         <td class="text-center"><a href="./propagandaDetails.php?type=工会&branch={$sector[$i]}">{$num}</a></td>
@@ -119,6 +134,8 @@ PRINTEND;
             </table>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </body>

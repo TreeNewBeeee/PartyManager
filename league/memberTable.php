@@ -14,6 +14,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>	
+    	
     <title></title>
 </head>
 
@@ -28,18 +30,15 @@ if (isset($_SESSION['username'])) {
 $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
-<div class="container">
-
-
-    <div class="row">
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-                <h3>团员大会-<?php echo $branch ?></h3>
-                <hr>
-            </div>
-
-        </div>
+	<div class="new-wrap">
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">团</span>
+				<span class="top-t">团员大会-<?php echo $branch ?></span>
+			</p>
+		</div>
+<div id="content" class="member">
+    <div class="">
 
         <?php
         require_once '../db_login.php';
@@ -52,26 +51,26 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         $row = $result->fetch_array();
         if ($row['branch'] == $branch) {
             echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="memberCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="memberDelete.php?branch={$branch}" role="button">删除</a>
+            	<div class="">
+                <div class="">
+                    <div class="addbtn">
+                        <span class="btn addBtn"><i class="icon-add "></i><a href="memberCreate.php?branch={$branch}" role="button">新增</a></span>
+                        <span class="btn addBtn"><i class="icon-add icon-dele"></i><a href="memberDelete.php?branch={$branch}" role="button">删除</a></span>
                         
                     </div>
         
                 </div>
+               </div>
 
 PRINT;
 
         }
 
         ?>
-
-        <br>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <table class="table table-condensed">
-                    <tr>
+        <div class="row memberTable new-martop">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr class="thhead">
                         <th width="10%" class="text-center">序号</th>
                         <th width="15%" class="text-center">年份</th>
                         <th width="15%" class="text-center">季度</th>
@@ -89,7 +88,7 @@ PRINT;
                     $index = 1;
                     while ($row = $result->fetch_array()) {
                         echo <<<PRINTTABLE
-                            <tr>
+                            <tr class="ttd">
                                 <td class="text-center">{$index}</td>
                                 <td class="text-center">{$row['year']}</td>
                                 <td class="text-center">{$row['season']}</td>

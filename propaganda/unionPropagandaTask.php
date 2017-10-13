@@ -17,100 +17,41 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-treeview.css" rel="stylesheet">
+    	    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <!-- Required Javascript -->
     <script src="../js/jquery-3.1.1.js"></script>
     <script src="../js/bootstrap-treeview.min.js"></script>
 
-    <style type="text/css">
+      <style type="text/css">
 
-
-        #content {
-            float: center;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
-        table {
-
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 0;
-        }
-
-        tbody tr:hover {
-
-            background: linear-gradient(#fff, #ffdcb9);
-
-        }
-
-        th {
-
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff, #ffdcb9); /* IE 10 */
-            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9)); /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9); /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9); /*Opera 11.10+*/
-        }
-
-        td {
-
-            text-align: center;
-
-        }
-
-        th:first-child {
-
-            border-radius: 6px 0 0 0;
-
-        }
-
-        th:last-child {
-
-            border-radius: 0 6px 0 0;
-
-        }
-
-        tr:last-child td:first-child {
-
-            border-radius: 0 0 0 6px;
-
-        }
-
-        tr:last-child td:last-child {
-
-            border-radius: 0 0 6px 0;
-
-        }
-
-        a:link {
-            color: #FF0000;
-            text-decoration: underline;
-        }
-
-        a:visited {
-            color: #00FF00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        a:active {
-            color: #FFFFFF;
-            text-decoration: none;
-        }
-
-
+	.d-info{
+		margin-top: 10px;
+		width: 420px;
+	}
+		.d-info .fo-item{
+			width: 100%;
+		}
+		.d-info .info-sub{
+			margin-top: 20px;
+		}
+		.new-form{
+			width: 400px;
+		}
+.fo-item label{
+	width: 165px;
+}
     </style>
 </head>
 <body>
-
+	<div class="new-wrap">
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">工	</span>
+				<span class="top-t">工会宣传指标-编辑页</span>
+			</p>
+		</div>
 <div id="container">
 
     <div id="content">
@@ -131,9 +72,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="#" method="post" enctype="multipart/form-data">
-                    <h3><i class="fa fa-print"></i>&nbsp;工会宣传指标-编辑页</h3>
-                    <br>
+                <form action="#" method="post" enctype="multipart/form-data" class="layui-form new-form clearfix">
 
                     <?php
                     require_once '../db_login.php';
@@ -148,17 +87,17 @@
                         $sector[$index] = $rows['name'];
                         $index++;
                         echo <<<SECTORTASK
-                        <div class="row">
-                            <div class="col-xs-4 col-md-offset-2">
+                        <div class="d-info clearfix">
+                        	<div class='fo-item'>
+                           <label for="" class="layui-form-label">
                                 {$rows['name']}：
+                            </label>
+                            <div class="layui-input-inline title-span">
+                                <input type="text"  class="layui-input" name="{$rows['name']}"><span>篇</span>
                             </div>
-                            <div class="col-xs-4">
-                                <input type="text" name="{$rows['name']}">&nbsp;&nbsp;篇
                             </div>
-                            
-    
-                        </div>
-                        <br/>
+ </div>
+
 SECTORTASK;
 
                     }
@@ -169,10 +108,9 @@ SECTORTASK;
                         <input type="hidden" name="isPost" value="true">
                     </div>
 
-                    <div style="margin:0 auto;width:200px;">
-
-                        <button class="button orange" type="submit" name="submit" value="submit">提交</button>
-                    </div>
+                   <div class="info-sub">
+					<input type="submit" value="提交"  name="submit"/>
+				</div>
                 </form>
 
                 <?php
@@ -195,6 +133,7 @@ SECTORTASK;
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </body>

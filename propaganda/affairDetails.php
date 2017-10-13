@@ -14,22 +14,47 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <title></title>
+         <style>
+    	
+    	       #content {
+
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+       
+        table {
+
+           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+
+
+        td {
+            
+            text-align: center;
+           
+
+        }
+    </style>
 </head>
 
 <body>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">政</span>
+				<span class="top-t">政务信息详情</span>
+			</p>
+		</div>
+<div id="content" class="member new-martop">
 
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-
-            <h3>政务信息详情</h3>
-
-        </div>
-
-    </div>
-    <br/>
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -52,10 +77,10 @@
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center" width="5%">序号</th>
                     <th class="text-center" width="40%">标题</th>
                     <th class="text-center" width="15%">作者</th>
@@ -101,7 +126,7 @@ PRINTBUTTON;
                 $index = 1;
                 while ($rows = $result->fetch_array()){
                     echo <<<PRINTTABLE
-                    <tr>
+                    <tr class="ttd">
                         <td class="text-center">{$index}</td>
                         <td class="text-center">{$rows['title']}</td>
                         <td class="text-center">{$rows['writter']}</td>
@@ -116,7 +141,7 @@ PRINTTABLE;
                                     <input type="hidden" name="title" value="{$rows['title']}">
                                     <input type="hidden" name="magzing" value="{$magzing}">
                                     <input type="hidden" name="branch" value="{$branch}">
-                                    <input type="submit" name="submit" value="采编">
+                                    <input type="submit" name="submit" class="btn newbtn" value="采编">
                                 </form>
                             </td>
                         </tr>
@@ -134,6 +159,7 @@ PRINTBUTTON;
             </table>
         </div>
     </div>
+</div>
 </div>
 
 <?php

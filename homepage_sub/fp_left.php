@@ -83,11 +83,95 @@
             <ul class="submenu">
                 <li><a href="#">组织发展</a>
                     <ul class="submenu">
+                        <li><a href="#">中心发展</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=中心">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=中心">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=中心">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=中心">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">机关党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=机关党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=机关党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=机关党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=机关党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">通信室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=通信室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=通信室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=通信室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=通信室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">通信运行室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=通信运行室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=通信运行室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=通信运行室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=通信运行室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">自动化数据室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=自动化数据室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=自动化数据室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=自动化数据室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=自动化数据室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">雷达室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=雷达室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=雷达室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=雷达室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=雷达室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">导航室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=导航室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=导航室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=导航室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=导航室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">航路导航室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=航路导航室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=航路导航室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=航路导航室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=航路导航室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">供电室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=供电室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=供电室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=供电室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=供电室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">维修室党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=维修室党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=维修室党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=维修室党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=维修室党支部">申请入党</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">现场车队党支部</a>
+                            <ul class="submenu">
+                                <li><a href="../pre_member.php?branch=现场车队党支部">预备党员</a></li>
+                                <li><a href="../develop_member.php?branch=现场车队党支部">发展对象</a></li>
+                                <li><a href="../active_member.php?branch=现场车队党支部">积极分子</a></li>
+                                <li><a href="../application_member.php?branch=现场车队党支部">申请入党</a></li>
+                            </ul>
+                        </li>
 
-                        <li><a href="../pre_member.php?branch=中心">预备党员</a></li>
-                        <li><a href="../develop_member.php?branch=中心">发展对象</a></li>
-                        <li><a href="../active_member.php?branch=中心">积极分子</a></li>
-                        <li><a href="../application_member.php?branch=中心">申请入党</a></li>
 
                     </ul>
                 </li>
@@ -96,142 +180,66 @@
                         <li><a href="#">机关党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=机关党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=机关党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=机关党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=机关党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=机关党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=机关党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="../member.php?branch=机关党支部">党员概述</a></li>
                             </ul>
                         </li>
                         <li><a href="#">通信室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=通信室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=通信室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=通信室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=通信室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=通信室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=通信室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="../member.php?branch=通信室党支部">党员概述</a>
                             </ul>
                         </li>
                         <li><a href="#">通信运行室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=通信运行室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=通信运行室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=通信运行室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=通信运行室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=通信运行室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=通信运行室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="../member.php?branch=通信运行室党支部">党员概述</a></li>
                             </ul>
                         </li>
                         <li><a href="#">自动化数据室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=自动化数据室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=自动化数据室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=自动化数据室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=自动化数据室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=自动化数据室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=自动化数据室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="../member.php?branch=自动化数据室党支部">党员概述</a></li>
 
                             </ul>
                         </li>
                         <li><a href="#">雷达室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=雷达室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=雷达室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=雷达室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=雷达室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=雷达室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=雷达室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="../member.php?branch=雷达室党支部">党员概述</a></li>
 
                             </ul>
                         </li>
                         <li><a href="#">导航室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=导航室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=导航室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=导航室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=导航室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=导航室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=导航室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="../member.php?branch=导航室党支部">党员概述</a></li>
 
                             </ul>
                         </li>
                         <li><a href="#">航路导航室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=航路导航室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=航路导航室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=航路导航室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=航路导航室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=航路导航室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=航路导航室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="../member.php?branch=航路导航室党支部">党员概述</a></li>
 
                             </ul>
                         </li>
                         <li><a href="#">供电室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=供电室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href=" ../member.php?branch=供电室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=供电室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=供电室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=供电室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=供电室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="../member.php?branch=供电室党支部">党员概述</a></li>
 
                             </ul>
                         </li>
                         <li><a href="#">维修室党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=维修室党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
-                                    <ul class="submenu">
-                                        <li><a href="../member.php?branch=维修室党支部">党员</a></li>
-                                        <li><a href="../pre_member.php?branch=维修室党支部">预备党员</a></li>
-                                        <li><a href="../develop_member.php?branch=维修室党支部">发展对象</a></li>
-                                        <li><a href="../active_member.php?branch=维修室党支部">积极分子</a></li>
-                                        <li><a href="../application_member.php?branch=维修室党支部">申请入党</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="../member.php?branch=维修室党支部">党员概述</a>
                             </ul>
                         </li>
                         <li><a href="#">现场车队党支部</a>
                             <ul class="submenu">
                                 <li><a href="../sectorinfo/office.php?branch=现场车队党支部">支部概述</a></li>
-                                <li><a href="#">个人概述</a>
+                                <li><a href="#">党员概述</a>
                                     <ul class="submenu">
                                         <li><a href="../member.php?branch=现场车队党支部">党员</a></li>
                                         <li><a href="../pre_member.php?branch=现场车队党支部">预备党员</a></li>
@@ -325,9 +333,9 @@
                 </li>
                 <li><a href="#">三鹰人才培养</a>
                     <ul class="submenu">
-                        <li><a href="#">翔鹰</a></li>
-                        <li><a href="#">精鹰</a></li>
-                        <li><a href="#">雏鹰</a></li>
+                        <li><a href="../eagles/eaglesTrainningUnit.php?type=翔鹰">翔鹰</a></li>
+                        <li><a href="../eagles/eaglesTrainningUnit.php?type=精鹰">精鹰</a></li>
+                        <li><a href="../eagles/eaglesTrainningUnit.php?type=雏鹰">雏鹰</a></li>
                     </ul>
                 </li>
             </ul>
@@ -340,7 +348,7 @@
                 <li><a href="../plans/seasonPlanUnit.html">季度总结</a></li>
                 <li><a href="../plans/endYearUnit.html">年终述职</a></li>
                 <li><a href="../plans/saftyReportUnit.html">安全态势分析</a></li>
-                <li><a href="#">理论学习</a></li>
+                <li><a href="../plans/studyUnit.html">理论学习</a></li>
 
             </ul>
         </li>

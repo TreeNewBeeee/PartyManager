@@ -8,114 +8,13 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-treeview.css" rel="stylesheet">
+   	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <!-- Required Javascript -->
     <script src="../js/jquery-3.1.1.js"></script>
     <script src="../js/bootstrap-treeview.min.js"></script>
 
-    <style type="text/css">
 
-
-        #content {
-            float:center;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
-
-
-        table {
-
-
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 1px;
-
-        }
-
-        tbody tr:hover {
-
-           background: linear-gradient(#fff,#ffdcb9);
-
-        }
-
-
-        th {
-            
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff,  #ffdcb9);        /* IE 10 */
-            background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/ 
-            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/ 
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9));      /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9);   /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9);  /*Opera 11.10+*/
-        }
-
-        td {
-            
-            text-align: center;
-
-           
-
-        }
-          
-        th:first-child {  
-
-
-             -moz-border-radius: 6px 0 0 0;
-             -webkit-border-radius: 6px 0 0 0;
-             border-radius: 6px 0 0 0;  
-          
-        }  
-          
-        th:last-child {  
-          
-             -moz-border-radius: 0 6px 0 0;
-             -webkit-border-radius: 0 6px 0 0;
-             border-radius: 0 6px 0 0;  
-          
-        }  
-
-        th:only-child{
-
-              -moz-border-radius: 6px 6px 0 0;
-              -webkit-border-radius: 6px 6px 0 0;
-               border-radius: 6px 6px 0 0;
-        }    
-          
-        tr:last-child td:first-child {  
-          
-             border-radius: 0 0 0 6px;  
-          
-        }  
-
-        
-          
-        tr:last-child td:last-child {  
-          
-             border-radius: 0 0 6px 0;  
-          
-        }  
-
-        a:link {
-            color:#FF0000;
-            text-decoration:underline;
-        }
-        a:visited {
-            color:#00FF00;
-            text-decoration:none;
-        }
-        a:hover {
-            color:#000000;
-            text-decoration:none;
-        }
-        a:active {
-            color:#FFFFFF;
-            text-decoration:none;
-        }
-
-    </style>
 
 
 </head>
@@ -123,6 +22,8 @@
 
 
 <body>
+	<div class="new-wrap">
+	
 <?php
 /*if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -133,18 +34,20 @@
 $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">党</span>
+				<span class="top-t">党支部概述</span>
+			</p>
+		</div>
+<div id="container" class="member">
 
-<div id="container" >
+    <div class="col-xs-12">
 
-    <div class="col-md-10 col-md-offset-1">
-
-        <h3><i class="fa fa-book"></i>&nbsp;党支部概述</h3>
-
-        <hr>
         <div class="row">
-            <div class="col-md-12">
-                <a class="btn btn-default" href="./programCreate.php?branch=<?php echo $branch?>&type=重点项目" role="button">新增支部重点项目</a>
-                <a class="btn btn-default" href="./programCreate.php?branch=<?php echo $branch?>&type=荣誉" role="button">新增支部荣誉</a>
+            <div class="col-md-12 text-r margtb">
+                <a class="btn new-add" href="./programCreate.php?branch=<?php echo $branch?>&type=重点项目" role="button">新增支部重点项目</a>
+                <a class="btn new-add" href="./programCreate.php?branch=<?php echo $branch?>&type=荣誉" role="button">新增支部荣誉</a>
             </div>
 
         </div>
@@ -155,9 +58,9 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         <div class="col-md-12">
             <div class="row">
 
-                <table class="table table-bordered" >
-                    <tr>
-                        <th class="warning">支部各类人员</th>
+                <table class="table table-type-1" >
+                    <tr class="no-topB">
+                        <th>支部各类人员</th>
                         <td>党支部书记、党支部组织委员、党支部宣传委员、党支部保密委员、党支部青年委员</td>
                     </tr>
 
@@ -205,17 +108,17 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
                     echo <<<TABLE
                         <tr>
-                            <th class="warning">支部党员年龄结构</th>
+                            <th class="">支部党员年龄结构</th>
                             <td>35岁以下党员{$numP[0]}人，占比{$percentage[0]}%。36至45岁党员{$numP[1]}人，占比{$percentage[1]}%。46至59岁党员{$numP[2]}人，占比{$percentage[2]}%</td>
                         </tr>
                         
                         <tr>
-                            <th class="warning">指定任务</th>
+                            <th class="">指定任务</th>
                             <td>大专及本科{$edu[2]}人，占比{$p_edu[2]}%。硕士研究生{$edu[1]}人，占比{$p_edu[1]}%。博士{$edu[0]}人，占比{$p_edu[0]}%</td>
                         </tr>
                         
                         <tr>
-                            <th class="warning">支部近年重点项目</th>
+                            <th class="">支部近年重点项目</th>
                             <td>
                                 <ul>
 
@@ -241,7 +144,7 @@ LIST;
                     </tr>
 
                     <tr>
-                    <th class="warning">支部今年所获荣誉</th>
+                    <th class="">支部今年所获荣誉</th>
                         <td>
                             <ul>
 LISTEND;
@@ -280,6 +183,7 @@ LISTEND;
         </div>
 
     </div>
+</div>
 </div>
 
 </body>

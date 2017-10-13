@@ -31,7 +31,7 @@
 			</p>
 		</div>
 
-    <div class="">
+    <div id="content" class="member">
 
         <?php
         require_once '../db_login.php';
@@ -44,14 +44,14 @@
         $row = $result->fetch_array();
         if ($row['branch'] == $branch){
             echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="preYearPlanCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="preYearPlanDelete.php?branch={$branch}" role="button">删除</a>
-                        
-                    </div>
-        
-                </div>
+                <div class="addbtn">
+                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add"></i><a href="preYearPlanCreate.php?branch={$branch}">新增</a>
+                        </span>
+                         <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-dele"></i><a href="preYearPlanDelete.php?branch={$branch}" role="button">删除</a>
+                        </span>
+               </div>
 
 PRINT;
 
@@ -60,7 +60,7 @@ PRINT;
         ?>
 
 
-        <div class="memberTable new-martop">
+        <div class="row memberTable new-martop">
             <div class="col-md-12">
                 <table class="table">
                     <tr class="thhead">

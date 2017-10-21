@@ -26,6 +26,7 @@
 <?php
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
+    $authorityCode = $_SESSION['authorityCode'];
 } else {
     echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
 }
@@ -50,7 +51,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         $query = "select * from `person` WHERE `name` = '".$_SESSION['username']."'";
         $result = $conn->query($query);
         $row = $result->fetch_array();
-        if ($row['branch'] == $branch){
+        if (($row['branch'] == $branch and $authorityCode == 20) or $authorityCode <= 1){
             echo <<<PRINT
                 <div class="row">
                     <div class="col-md-4 col-md-offset-1">

@@ -380,7 +380,9 @@
 
         <li><a href="#"><i class="fa fa-suitcase"></i>党风廉政</a>
             <ul class="submenu">
-
+                <li><a href="../anti-corruption/caseStudy.php">案例学习</a></li>
+                <li><a href="../anti-corruption/lawStudy.php">法规学习</a></li>
+                <li><a href="../anti-corruption/purchase.php">小微采购</a></li>
             </ul>
         </li>
     </ul>

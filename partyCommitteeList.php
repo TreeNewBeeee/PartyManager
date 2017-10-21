@@ -12,12 +12,10 @@
     <!--<script src="./js/jquery-3.1.1.js"></script>-->
     <script src="./js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap-treeview.min.js"></script>
-    <style type="text/css">
+    <style type="text/css"></style>
 
-    </style>
-    </script>
 </head>
-</head>
+
 <body>
 
 	<div class="new-wrap">
@@ -63,7 +61,7 @@
 
             $query = "SELECT * FROM person WHERE `authorityCode` >= '10' AND `authorityCode` <= '14'";
             $result = $conn->query($query);
-            
+
             if (!$result) die($conn->connect_error);
 
             while ($rows = $result->fetch_array()){
@@ -90,12 +88,12 @@
                       $arr_authorCode[4] = 14;
                       break;
 
-                      
+
 
                 }
 
-            }    
-                
+            }
+
             switch($authorityCode) {
 
 

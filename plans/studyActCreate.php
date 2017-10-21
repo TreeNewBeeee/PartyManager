@@ -95,9 +95,17 @@
                                     <label for="month">类型</label>
                                     <div class="form-group">
                                         <select class="form-control" id="division" name="division">
-                                            <option value="三会一课">三会一课</option>
-                                            <option value="两学一做">两学一做</option>
-
+                                            <option value="支部党员大会">支部党员大会（半年）</option>
+                                            <option value="支部民主生活会">支部民主生活会（半年）</option>
+                                            <option value="全体职工大会">全体职工大会（半年）</option>
+                                            <option value="支部党员活动">支部党员活动（半年）</option>
+                                            <option value="职工思想分析">职工思想分析（季度）</option>
+                                            <option value="党课教育">党课教育（季度）</option>
+                                            <option value="党小组会">党小组会（季度）</option>
+                                            <option value="党员民主评议">党员民主评议（每年）</option>
+                                            <option value="党员发展">党员发展（每年）</option>
+                                            <option value="新闻稿件任务">新闻稿件任务（每年）</option>
+                                            <option value="支委会">支委会（每月）</option>
                                         </select>
                                     </div>
                                 </div>

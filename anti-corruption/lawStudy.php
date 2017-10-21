@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: TreeNewBeee
- * Date: 2017-06-12
- * Time: 23:22
+ * Date: 2017-10-15
+ * Time: 16:09
  */
 ?>
 
@@ -15,10 +15,10 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/main.css"/>
-            	<style type="text/css">
+    <title>法规学习</title>
+    <style type="text/css">
 
-        	</style>
-    <title></title>
+    </style>
 </head>
 
 <body>
@@ -30,16 +30,16 @@ if (isset($_SESSION['username'])) {
     echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
 }
 
-$branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
 ?>
-	<div class="new-wrap">
-						<div class="top-title">
-			<p>
-				<span class="icon-comm">安</span>
-				<span class="top-t">安全态势报告-<?php echo $branch?></span>
-			</p>
-		</div>
+<div class="new-wrap">
+    <div class="top-title">
+        <p>
+            <span class="icon-comm">法</span>
+            <span class="top-t">法规学习</span>
+        </p>
+    </div>
+
     <div id="content" class="member">
 
         <?php
@@ -48,18 +48,13 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         if ($conn->connect_error) die($conn->connect_error);
         mysqli_set_charset($conn, 'utf8');
 
-        $query = "select * from `person` WHERE `name` = '".$_SESSION['username']."'";
-        $result = $conn->query($query);
-        $row = $result->fetch_array();
-        if (($row['branch'] == $branch and $authorityCode == 20) or $authorityCode <= 1){
+        if ($authorityCode <= 1){
             echo <<<PRINT
-               <div class="addbtn">
+                <div class="addbtn">
                         <span type="button" class="btn btn-default addBtn">
-                            <i class="icon-add"></i><a href="saftyReportCreate.php?branch={$branch}" role="button">新增</a>
+                            <i class="icon-add"></i><a href="./submitItem.php?type=法规学习">新增</a>
                         </span>
-                         <span type="button" class="btn btn-default addBtn">
-                            <i class="icon-add icon-dele"></i><a href="saftyReportDelete.php?branch={$branch}" role="button">删除</a>
-                        </span>
+                         
                </div>
 
 PRINT;
@@ -69,15 +64,12 @@ PRINT;
         ?>
 
 
-
-
         <div class="row memberTable new-martop">
             <div class="col-md-12">
                 <table class="table">
                     <tr class="thhead">
                         <th width="10%" class="text-center">序号</th>
-                        <th width="15%" class="text-center">年份</th>
-                        <th width="15%" class="text-center">月份</th>
+                        <th width="80%" class="text-center">标题</th>
                         <th class="text-center">下载</th>
                     </tr>
                     <?php
@@ -86,7 +78,7 @@ PRINT;
                     if ($conn->connect_error) die($conn->connect_error);
                     mysqli_set_charset($conn, 'utf8');
 
-                    $query = "SELECT * FROM `plans` WHERE `branch` = '".$branch."' AND `type` = '安全态势报告'  ORDER BY `plans`.`ID` DESC";
+                    $query = "select * from `anticorruption` WHERE `type` = '法规学习' ORDER BY `ID` DESC";
                     $result = $conn->query($query);
                     // TODO: 未完成根据时间限制查看
                     $index = 1;
@@ -94,9 +86,8 @@ PRINT;
                         echo <<<PRINTTABLE
                             <tr class="ttd">
                                 <td class="text-center">{$index}</td>
-                                <td class="text-center">{$row['year']}</td>
-                                <td class="text-center">{$row['month']}</td>
-                                <td class="text-center"><a class="btn-sm" href="../Files/{$row['fileName']}" role="button">查看</a> </td>
+                                <td class="text-center">{$row['name']}</td>
+                                <td class="text-center"><a class="" href="../Files/{$row['file']}" role="button">查看</a> </td>
                             </tr>
 
 PRINTTABLE;
@@ -121,7 +112,5 @@ PRINTTABLE;
 
 </body>
 </html>
-
-
 
 

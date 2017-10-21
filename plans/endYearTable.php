@@ -25,6 +25,7 @@
     <?php
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
+        $authorityCode = $_SESSION['authorityCode'];
     } else {
         echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
     }
@@ -50,7 +51,7 @@
             $query = "select * from `person` WHERE `name` = '".$_SESSION['username']."'";
             $result = $conn->query($query);
             $row = $result->fetch_array();
-            if ($row['branch'] == $branch){
+            if (($row['branch'] == $branch and $authorityCode == 20) or $authorityCode <= 1){
                 echo <<<PRINT
                 <div class="addbtn">
                         <span type="button" class="btn btn-default addBtn">

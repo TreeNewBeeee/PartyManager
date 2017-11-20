@@ -322,7 +322,7 @@
             </ul>
         </li>
 
-        <li><a href="#"><i class="l-icon icon-pmin"></i>队伍建设</a>
+        <li><a href="#"><i class="icon-duiwu"></i>队伍建设</a>
             <ul class="submenu">
                 <li><a href="#">三鹰人才选拔</a>
                     <ul class="submenu">
@@ -364,7 +364,7 @@
         <li><a href="../propaganda/affairsInfo.php"><i class="l-icon icon-zhenw"></i>政务信息</a>
         </li>
 
-        <li><a href="#"><i class="fa fa-suitcase"></i>团建管理</a>
+        <li><a href="#"><i class="icon-tuandui"></i>团建管理</a>
             <ul class="submenu">
                 <li><a href="../league/classUnit.php">团课</a></li>
                 <li><a href="../league/leaderUnit.php">支委会</a></li>
@@ -378,7 +378,7 @@
             </ul>
         </li>
 
-        <li><a href="#"><i class="fa fa-suitcase"></i>党风廉政</a>
+        <li><a href="#"><i class="icon-fencai"></i>党风廉政</a>
             <ul class="submenu">
                 <li><a href="../anti-corruption/caseStudy.php">案例学习</a></li>
                 <li><a href="../anti-corruption/lawStudy.php">法规学习</a></li>

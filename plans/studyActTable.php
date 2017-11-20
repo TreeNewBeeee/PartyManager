@@ -26,7 +26,6 @@
 <?php
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $authorityCode = $_SESSION['authorityCode'];
 } else {
     echo "<script>alert('先登陆。。。!');location.href='index.php';</script>";
 }
@@ -41,7 +40,7 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 				<span class="top-t">基础规范类工作开展情况-<?php echo $branch?></span>
 			</p>
 		</div>
-    <div class="">
+    <div id="content" class="member">
         <?php
         require_once '../db_login.php';
         $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -51,16 +50,16 @@ $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
         $query = "select * from `person` WHERE `name` = '".$_SESSION['username']."'";
         $result = $conn->query($query);
         $row = $result->fetch_array();
-        if (($row['branch'] == $branch and $authorityCode == 20) or $authorityCode <= 1){
+        if ($row['branch'] == $branch){
             echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="studyActCreate.php?branch={$branch}" role="button">新增</a>
-                        <a class="btn btn-default" href="studyActDelete.php?branch={$branch}" role="button">删除</a>
-                        <hr>
-                    </div>
-        
-                </div>
+                 <div class="addbtn">
+                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add"></i><a href="studyActCreate.php?branch={$branch}" role="button">新增</a>
+                        </span>
+                         <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-dele"></i><a href="studyActDelete.php?branch={$branch}" role="button">删除</a>
+                        </span>
+               </div>
 
 PRINT;
 
@@ -68,10 +67,7 @@ PRINT;
 
         ?>
 
-        <br>
-
-
-        <div class="memberTable">
+        <div class="row memberTable new-martop">
             <div class="col-md-12">
                 <table class="table">
                     <tr class="thhead">

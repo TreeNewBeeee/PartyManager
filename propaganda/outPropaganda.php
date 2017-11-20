@@ -5,21 +5,48 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <title>外媒宣传</title>
+    <style>
+    	
+    	       #content {
+            float: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+       
+        table {
+
+           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+
+
+        td {
+            
+            text-align: center;
+           
+
+        }
+    </style>
 </head>
 
 <body>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">外</span>
+				<span class="top-t">外媒宣传</span>
+			</p>
+		</div>
+<div id="container">
+<div id="content" class="member">
 
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-
-            <h3>外媒宣传</h3>
-
-        </div>
-
-    </div>
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -31,15 +58,17 @@
 
     if ($authorityCode == 102 or $authorityCode == 0) {
         echo <<<PRINTBUTTON
-        <div class="row">
-                <div class="col-md-4 col-md-offset-1">
-        
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="./outPropagandaTask.php">&nbsp;外媒指标编辑</a>
-                    </button>
+
+                <div class="col-md-12">
+                                    <div class="addbtn">
+                <span type="button" class="btn  addBtn">
+                    <i class="icon-add"></i><a href="./outPropagandaTask.php">外媒指标编辑</a>
+                </span>
+				</div>
+
                 </div>
-            </div>
-            <br/>
+
+
 PRINTBUTTON;
 
     }
@@ -47,10 +76,10 @@ PRINTBUTTON;
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center">党支部</th>
                     <th class="text-center">外媒计划（篇）</th>
                     <th class="text-center">影响力巨大的媒体（篇）</th>
@@ -85,7 +114,7 @@ PRINTBUTTON;
                     $num = $result->num_rows;
 
                     echo <<<PRINTSECTOR
-                    <tr>
+                    <tr class="ttd">
                         <td>{$sector[$i]}</td>
                         <td class="text-center">{$sectorTask[$i]}</td>
                         <td class="text-center"><a href="./propagandaDetails.php?type=外媒&branch={$sector[$i]}&influence=影响力巨大">{$num}</a></td>
@@ -140,6 +169,8 @@ PRINTEND;
             </table>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </body>

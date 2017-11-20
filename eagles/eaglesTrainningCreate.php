@@ -11,13 +11,34 @@
     <?php session_start(); ?>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link href="../css/bootstrap.css" rel="stylesheet">
-        <style type="text/css">
-
-        </style>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+        	
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>	
+        <script src="../js/jquery-1.7.1.js"></script>
+        <script src="../layui/layui.js" type="text/javascript" charset="utf-8"></script>
+        	
         <title></title>
+            <style type="text/css">
+
+	.d-info{
+		margin-top: 10px;
+		width: 400px;
+	}
+		.d-info .fo-item{
+			width: 100%;
+		}
+		.d-info .info-sub{
+			margin-top: 20px;
+		}
+		.new-form{
+			width: 400px;
+		}
+.fo-item label{
+	width: 130px;
+}
+    </style>
     </head>
 
     <body>
@@ -31,44 +52,40 @@
     $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
     $type = isset($_GET['type']) ? $_GET['type'] : NULL;
     ?>
-
-    <div class="container">
-
-
-        <div class="row">
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-                    <h2>新增三鹰培养方案-<?php echo $branch?></h2>
-                    <hr/>
-                </div>
-
-            </div>
-
+	<div class="new-wrap">
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">增</span>
+				<span class="top-t">新增三鹰培养方案-<?php echo $branch?></span>
+			</p>
+		</div>
+    <div id="container">
+       <div id="content">
             <div class="row">
 
-                <div class="col-md-10 col-md-offset-1">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="year">年份</label>
-                                    <input type="text" class="form-control" id="year" name="year" placeholder="请填写四位年份如：<?php echo date("Y") ?>">
-                                </div>
-                            </div>
+                <div class="col-md-12">
+                    <form method="post" enctype="multipart/form-data" class="layui-form new-form clearfix">
+
+                      <div class="d-info clearfix">	
+                    	<div class="fo-item">                        	
+                             <label for="year" class="layui-form-label">年份</label>
+                             <div class="layui-input-inline">
+                             	
+                              <input type="text" class="layui-input" id="year" name="year" placeholder="请填写四位年份如：<?php echo date("Y") ?>">
+                             </div>
                         </div>
-
-
-
-
-                        <div class="form-group">
-                            <label for="file">选择文件</label>
+                        <div class="fo-item">
+                            <label for="file" class="layui-form-label">选择文件</label>
+                             <div class="layui-input-inline">
                             <input type="file" id="file" name="file">
+                            </div>
 
                         </div>
 
-
-                        <button type="submit" class="btn btn-default">上传</button>
+			             <div class="info-sub">
+								<input type="submit" value="上传"  name="submit"/>
+							</div>
+						</div>
                     </form>
                 </div>
 
@@ -79,6 +96,7 @@
         </div>
 
 
+    </div>
     </div>
 
     </body>

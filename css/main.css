@@ -693,6 +693,16 @@ td {
 	margin-top: 3px;
 	margin-right: 12px;
 }
+.icon-duiwu{
+    width: 14px !important;
+    height: 12px;
+    display: inline-block;
+    background-image: url(../images/icon-ngroup.png);
+    background-repeat: no-repeat;
+    margin-top: 5px;
+    margin-right: 9px;
+    background-size: 100%;
+}
 .icon-fencai{
 	width: 16px !important;
 	height: 16px;

@@ -3,107 +3,25 @@
 <html>
 
 <head>
-    <title>首页</title>
+    <title></title>
     <link rel="stylesheet" href="./fonts/font-awesome/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>	
     <!-- Required Javascript -->
     <!--<script src="./js/jquery-3.1.1.js"></script>-->
     <script src="../js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap-treeview.min.js"></script>
 
-    <style type="text/css">
-
-        #content {
-            float: center;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
-        table {
-
-            border-collapse: separate;
-            *border-collapse: collapse; /* IE7 and lower */
-            border-spacing: 0;
-        }
-
-        tbody tr:hover {
-
-            background: linear-gradient(#fff, #ffdcb9);
-
-        }
-
-        th {
-
-            padding: 10px;
-            text-align: center;
-            background-color: #FF9999;
-            background: -ms-linear-gradient(top, #fff, #ffdcb9); /* IE 10 */
-            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ffdcb9)); /* Safari 4-5, Chrome 1-9*/
-            background: -webkit-linear-gradient(top, #fff, #ffdcb9); /*Safari5.1 Chrome 10+*/
-            background: -o-linear-gradient(top, #fff, #ffdcb9); /*Opera 11.10+*/
-        }
-
-        td {
-
-            text-align: center;
-
-        }
-
-        th:first-child {
-
-            border-radius: 6px 0 0 0;
-
-        }
-
-        th:last-child {
-
-            border-radius: 0 6px 0 0;
-
-        }
-
-        tr:last-child td:first-child {
-
-            border-radius: 0 0 0 6px;
-
-        }
-
-        tr:last-child td:last-child {
-
-            border-radius: 0 0 6px 0;
-
-        }
-
-        a:link {
-            color: #FF0000;
-            text-decoration: underline;
-        }
-
-        a:visited {
-            color: #00FF00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        a:active {
-            color: #FFFFFF;
-            text-decoration: none;
-        }
-
-
-    </style>
+  
 </head>
 
 <body>
+	<div class="new-wrap">
+	
 
-<div id="container">
+
 
     <div id="content">
 
@@ -247,80 +165,85 @@
 
         ?>
 
-        <h3><i class="fa fa-user"></i>&nbsp;<?php echo $name ?>-评价列表</h3>
 
-        <div class="row">
+		<div class="top-title" style="padding:0">
+			<p>
+				<span class="icon-comm">评</span>
+				<span class="top-t"><?php echo $name ?>-评价列表</span>
+			</p>
+		</div>
+        <div class="row memberTable new-martop">
             <div class="col-md-12">
-                <hr>
 
-                <table class="table table-condensed" align="center">
-                    <tr class="warning">
+
+                <table class="table" align="center">
+                    <tr class="thhead">
                         <th width="30%">支部名称</th>
                         <th width="30%">总分</th>
                         <th width="40%">详情</th>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>机关党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][0] ?></td>
                         <td><a href="partyCommitteeScore.php?branchSecretary=孙莹涛&branch=机关党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>通信室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][1] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=叶庆康&branch=通信室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>通信运行室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][2] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=王涛&branch=通信运行室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>自动化数据室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][3] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=王璐&branch=自动化数据室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>雷达室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][4] ?></td>
                         <td><a href="partyCommitteeScore.php?branchSecretary=李牧&branch=雷达室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>导航室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][5] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=付鹏亮&branch=导航室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>航路导航室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][6] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=张翼起&branch=航路导航室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>供电室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][7] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=王琰琳&branch=供电室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>维修室党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][8] ?></td>
                         <td>
                             <a href="partyCommitteeScore.php?branchSecretary=韩西胜&branch=维修室党支部&name=<?php echo $name ?>">评分</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="ttd">
                         <td>现场车队党支部</td>
                         <td><?php echo $partyCommitteeScore[$flag][9] ?></td>
                         <td>

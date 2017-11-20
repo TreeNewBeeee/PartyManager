@@ -12,12 +12,33 @@
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         <link href="../css/bootstrap.css" rel="stylesheet">
-        <style type="text/css">
-
-        </style>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+        	
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>	
+        <script src="../js/jquery-1.7.1.js"></script>
+        <script src="../layui/layui.js" type="text/javascript" charset="utf-8"></script>
+        	
         <title></title>
+            <style type="text/css">
+
+	.d-info{
+		margin-top: 10px;
+		width: 400px;
+	}
+		.d-info .fo-item{
+			width: 100%;
+		}
+		.d-info .info-sub{
+			margin-top: 20px;
+		}
+		.new-form{
+			width: 400px;
+		}
+.fo-item label{
+	width: 130px;
+}
+    </style>
     </head>
 
     <body>
@@ -31,39 +52,30 @@
     $branch = isset($_GET['branch']) ? $_GET['branch'] : NULL;    // 获取单位
 
     ?>
-
-    <div class="container">
-
-
-        <div class="row">
-
+	<div class="new-wrap">
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">删</span>
+				<span class="top-t">删除理论学习-<?php echo $branch?></span>
+			</p>
+		</div>
+    <div id="container">
+       <div id="content">
             <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-                    <h2>删除理论学习-<?php echo $branch?></h2>
-                    <hr/>
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-10 col-md-offset-1">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="year">年份</label>
-                                    <input type="text" class="form-control" id="year" name="year" placeholder="请填写四位年份如：<?php echo date("Y") ?>">
-                                </div>
-                            </div>
+                <div class="col-md-12">
+                    <form method="post" enctype="multipart/form-data" class="layui-form new-form clearfix">
+                      <div class="d-info clearfix">	
+                    	<div class="fo-item">                        	
+                             <label for="year" class="layui-form-label">年份</label>
+                             <div class="layui-input-inline">
+                             	
+                              <input type="text" class="layui-input" id="year" name="year" placeholder="请填写四位年份如：<?php echo date("Y") ?>">
+                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="month">月份</label>
-                                    <div class="form-group">
-                                        <select class="form-control" id="month" name="month">
+                        <div class="fo-item">
+                                    <label for="month" class="layui-form-label">月份</label>
+                                    <div class="layui-input-inline">
+										<select id="month" name="month">
                                             <option value="1">一月</option>
                                             <option value="2">二月</option>
                                             <option value="3">三月</option>
@@ -78,12 +90,15 @@
                                             <option value="12">十二月</option>
                                         </select>
                                     </div>
-                                </div>
-                            </div>
                         </div>
 
 
-                        <button type="submit" class="btn btn-default">删除</button>
+
+             <div class="info-sub">
+					<input type="submit" value="上传"  name="submit"/>
+				</div>
+				</div>
+                    	
                     </form>
                 </div>
 
@@ -95,8 +110,37 @@
 
 
     </div>
+    </div>
 
     </body>
+                        <script type="text/javascript">
+			layui.use("form",function(){
+        var $ = layui.jquery, form = layui.form();
+        var laydate = layui.laydate;
+
+	form.on("checkbox",function(data){
+		data.elem.checked=!data.elem.checked;
+	})
+	var start = {
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            },
+            format: 'YYYY/MM/DD', //日期格式
+        };
+        var end = {
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        		$(".inp-date").click(function(){
+			start.elem=this;
+			laydate(start);
+		})
+	})
+	</script>
     </html>
 
 

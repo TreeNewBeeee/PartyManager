@@ -176,8 +176,13 @@ PRINTFORM;
                         <div class="fo-item">
                             <label for="" class="layui-form-label">刊登时间</label>
                             <div class="layui-input-inline">
-								<input type="text" class="layui-input inp-date" name="publishTimegth">
+								<input type="text" class="layui-input inp-date" name="publishTime">
                         	</div>
+                        </div>
+                        <div class="fo-item">
+                         <label for="" class="layui-form-label">附件</label>
+            						<div class="layui-input-inline">
+						<input type="file" name="file" id="file">
                         </div>                                   
                         <input type="hidden" name="type" value="{$type}"/>
                         <input type="hidden" name="branch" value="{$branch}"/>

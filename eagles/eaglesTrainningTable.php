@@ -36,11 +36,11 @@ $type = isset($_GET['type']) ? $_GET['type'] : NULL;
 <div class="new-wrap">
     <div class="top-title">
         <p>
-            <span class="icon-comm">XX</span>
+            <span class="icon-comm">培</span>
             <span class="top-t">三鹰培养-<?php echo $type?>-<?php echo $branch?></span>
         </p>
     </div>
-    <div class="">
+    <div id="content" class="member">
 
         <?php
         require_once '../db_login.php';
@@ -53,25 +53,22 @@ $type = isset($_GET['type']) ? $_GET['type'] : NULL;
         $row = $result->fetch_array();
         if ($row['branch'] == $branch){
             echo <<<PRINT
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                        <a class="btn btn-default" href="eaglesTrainningCreate.php?branch={$branch}&type={$type}" role="button">新增</a>
-                        <a class="btn btn-default" href="eaglesTrainningDelete.php?branch={$branch}&type={$type}" role="button">删除</a>
-                        <hr>
-                    </div>
-        
-                </div>
+               <div class="addbtn">
+                        <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add"></i><a href="eaglesTrainningCreate.php?branch={$branch}&type={$type}" role="button">新增</a>
+                        </span>
+                         <span type="button" class="btn btn-default addBtn">
+                            <i class="icon-add icon-dele"></i><a href="eaglesTrainningDelete.php?branch={$branch}&type={$type}" role="button">删除</a>
+                        </span>
+               </div>
+
 
 PRINT;
 
         }
 
         ?>
-
-        <br>
-
-
-        <div class="memberTable">
+        <div class="row memberTable new-martop">
             <div class="col-md-12">
                 <table class="table">
                     <tr class="thhead">

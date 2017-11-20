@@ -110,6 +110,8 @@ PRINTBUTTON;
                     $index++;
                 }
                 $result->close();
+
+//                var_dump($sector);
                 //                打印支部内刊刊登表格
                 for ($i = 0; $i < $index; $i++) {
                     $query = "SELECT * FROM `propaganda` WHERE `branch` = '" . $sector[$i] . "' and

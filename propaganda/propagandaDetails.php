@@ -14,22 +14,47 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    	
     <title></title>
+     <style>
+    	
+    	       #content {
+
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+       
+        table {
+
+           
+            border-collapse: separate;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+        }
+
+
+        td {
+            
+            text-align: center;
+           
+
+        }
+    </style>
 </head>
 
 <body>
+	<div class="new-wrap">
+	
+		<div class="top-title">
+			<p>
+				<span class="icon-comm">发</span>
+				<span class="top-t">发表情况</span>
+			</p>
+		</div>
+<div id="content" class="member new-martop">
 
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-1">
-
-            <h3>发表情况</h3>
-
-        </div>
-
-    </div>
-    <br/>
 
     <?php
     if (isset($_SESSION['username'])) {
@@ -41,7 +66,6 @@
 
     $type = isset($_GET['type']) ? $_GET['type'] : null;
     $branch = isset($_GET['branch']) ? $_GET['branch'] : null;
-    $magzing = isset($_GET['magzing']) ? $_GET['magzing'] : null;
     $influence = isset($_GET['influence']) ? $_GET['influence'] : null;
 
     require_once '../db_login.php';
@@ -53,10 +77,10 @@
     ?>
 
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <table class="table table-condensed">
-                <tr>
+    <div class="row memberTable">
+        <div class="col-md-12">
+            <table class="table">
+                <tr class="thhead">
                     <th class="text-center" width="5%">序号</th>
                     <th class="text-center" width="30%">标题</th>
                     <th class="text-center" width="20%">刊物</th>
@@ -66,14 +90,14 @@
                     <th class="text-center" width="5%">附件</th>
                 </tr>
                 <?php
-                $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$branch."' and
-                            `type` = '".$type."' and `year` = '".date("Y")."' and
-                            `influence` = '".$influence."'";
-                $result = $conn->query($query);
-                $index = 1;
-                while ($rows = $result->fetch_array()){
-                    echo <<<PRINTTABLE
-                    <tr>
+                if ($type == '外媒'){
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$branch."' and
+                            `type` = '".$type."' and `influence` = '".$influence."' and `year` = '".date("Y")."'";
+                    $result = $conn->query($query);
+                    $index = 1;
+                    while ($rows = $result->fetch_array()){
+                        echo <<<PRINTTABLE
+                    <tr class="ttd">
                         <td class="text-center">{$index}</td>
                         <td class="text-center">{$rows['title']}</td>
                         <td class="text-center">{$rows['magzing']}</td>
@@ -83,8 +107,50 @@
                         <td class="text-center"><a href="{$rows['file']}">查看</a></td>
                     </tr>
 PRINTTABLE;
-                    $index++;
+                        $index++;
+                    }
+                }elseif($type == '内刊'){
+
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '".$branch."' and
+                            `type` = '".$type."' and `magzing` = '".$_GET['magzing']."' and `year` = '".date("Y")."'";
+                    $result = $conn->query($query);
+                    $index = 1;
+                    while ($rows = $result->fetch_array()){
+                        echo <<<PRINTTABLE
+                    <tr class="ttd">
+                        <td class="text-center">{$index}</td>
+                        <td class="text-center">{$rows['title']}</td>
+                        <td class="text-center">{$rows['magzing']}</td>
+                        <td class="text-center">图：{$rows['grapher']}/文：{$rows['writter']}</td>
+                        <td class="text-center">{$rows['length']}</td>
+                        <td class="text-center">{$rows['publishTime']}</td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                    </tr>
+PRINTTABLE;
+                        $index++;
+                    }
+                }elseif ($type == '工会') {
+                    $query = "SELECT * FROM `propaganda` WHERE `branch` = '" . $branch . "' and
+                            `type` = '" . $type . "' and `year` = '" . date("Y") . "'";
+                    $result = $conn->query($query);
+                    $index = 1;
+                    while ($rows = $result->fetch_array()) {
+                        echo <<<PRINTTABLE
+                    <tr class="ttd">
+                        <td class="text-center">{$index}</td>
+                        <td class="text-center">{$rows['title']}</td>
+                        <td class="text-center">{$rows['magzing']}</td>
+                        <td class="text-center">图：{$rows['grapher']}/文：{$rows['writter']}</td>
+                        <td class="text-center">{$rows['length']}</td>
+                        <td class="text-center">{$rows['publishTime']}</td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                    </tr>
+PRINTTABLE;
+                        $index++;
+                    }
                 }
+
+
                 ?>
 
 
@@ -92,6 +158,7 @@ PRINTTABLE;
             </table>
         </div>
     </div>
+</div>
 </div>
 
 </body>

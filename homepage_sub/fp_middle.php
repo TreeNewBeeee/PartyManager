@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<?php session_start();
+$branch = isset($_SESSION['branch']) ? $_SESSION['branch'] : null;
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>˗ҳ</title>
@@ -103,7 +106,8 @@ body{
 //                          echo $rows['title'];
                           echo <<<MISSION
                             <li class="clearfix">
-								<a href="../homepageView.php?title={$rows['title']}&type=fixedmission">
+								<!--<a href="../homepageView.php?title={$rows['title']}&type=fixedmission">-->
+								<a href="../missionViewer.php?title={$rows['title']}&branch={$branch}">
                                     <div class="item-left">
                                         <span>{$rows['title']}<span>
                                     </div>
@@ -149,13 +153,13 @@ MISSION;
                   if (!$result) die($conn->connect_error);
 
                   $index = 1;
-                  while ($rows = $result->fetch_array() and $index <= 4){   // ֻДʾ4ѐ
+                  while ($rows = $result->fetch_array() and $index <= 4){   //
 
 //                          echo $rows['title'];
                       echo <<<MISSION
                             <li class="clearfix">
 
-                                <a href="../homepageView.php?title={$rows['title']}&type=fixedmission">
+                                <a href="../missionGrab.php?branch={$branch}&title={$rows['title']}">
                                     <div class="item-left">
                                         <span>{$rows['title']}<span>
                                     </div>
@@ -221,7 +225,7 @@ MISSION;
                             <li class="clearfix">
 
                                     <div class="item-left">
-                                        <a href="../homepageView.php?title={$rows['title']}&type=assignmission">{$rows['title']}</a>
+                                        <a href="../missionViewer.php?title={$rows['title']}&branch={$branch}">{$rows['title']}</a>
                                     </div>
                                     <div class="item-right">
                                         {$rows['timeLimit']}
@@ -272,7 +276,7 @@ MISSION;
                             <li class="clearfix">
 
                                     <div class="item-left">
-                                        <a href="../homepageView.php?title={$rows['title']}&type=shiningmission">{$rows['title']}</a>
+                                        <a href="../missionViewer.php?title={$rows['title']}&branch={$branch}">{$rows['title']}</a>
                                     </div>
                                     <div class="item-right">
                                         {$rows['timeLimit']}

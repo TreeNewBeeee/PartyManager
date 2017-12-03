@@ -169,7 +169,7 @@ $query = "INSERT INTO `fixedmission` (`id`, `publisher`, `title`, `annix`,
     `radar`, `power`, `maintain`, `commuRun`, `motor`, `navi`, `route`, `sect11`, 
     `sect12`, `sect13`, `sect14`) VALUES (NULL, '" . $_POST['publisher'] . "', 
     '" . $_POST['title'] . "', '" . $path.$filename . "', '" . $_POST['details'] . "',
-     '" . $_POST['zoneMax'] . "', '" . $_POST['zoneMin'] . "', '" . $_POST['timeLimit'] . "', 
+     NULL, NULL, '" . $_POST['timeLimit'] . "', 
      '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');";
 $conn->query($query);
 

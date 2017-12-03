@@ -100,6 +100,7 @@ if(isset($_SESSION['username'])){
 
 
             ?>
+            <li><a href="./fp_middle.php" target="mainFrame"></i>首页</a></li>
             <li>
                 <a href="../newMSG.php?branch=<?php echo $branch?>" target="mainFrame"><i class="icon-new"></i>新消息 <span class="badge new-badge"><?php echo $msgNum?></span></a>
             </li>

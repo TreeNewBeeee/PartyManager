@@ -85,7 +85,7 @@
                     <th class="text-center" width="40%">标题</th>
                     <th class="text-center" width="15%">作者</th>
                     <th class="text-center" width="15%">发表时间</th>
-                    <th class="text-center" width="5%">附件</th>
+                    <th class="text-center" width="5%">操作</th>
                     <?php
                     if ($authorityCode == 0 or $authorityCode == 102){
                         switch ($magzing){
@@ -131,7 +131,7 @@ PRINTBUTTON;
                         <td class="text-center">{$rows['title']}</td>
                         <td class="text-center">{$rows['writter']}</td>
                         <td class="text-center">{$rows['publishTime']}</td>
-                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a>&nbsp;<a href="./confirmDelete.php?title={$rows['title']}&type=政务信息&branch={$branch}">删除</a></td>
 PRINTTABLE;
                     if ($authorityCode == 0 or $authorityCode == 102){
                         echo <<<PRINTBUTTON

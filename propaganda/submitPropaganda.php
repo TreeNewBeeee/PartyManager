@@ -22,7 +22,7 @@ if ($_FILES['file']['name'] != '') {
             //                echo "文件保存在: " . "/Files/" . $_FILES["file"]["name"] . " <br />";
             //                echo "类型: " . $_FILES["file"]["type"] . "<br />";
             //                echo "大小: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-            echo "<script>alert('创建成功！');</script>";
+
         }
     }
 } else {
@@ -44,7 +44,9 @@ if (isset($_POST['type'])) {
     $publishTime = isset($_POST['publishTime']) ? $_POST['publishTime'] : null;
     $file = isset($_POST['file']) ? $_POST['file'] : null;
 
-    echo $magazing;
+    $ope = isset($_POST['ope']) ? $_POST['ope'] : null;
+
+//    echo $magazing;
 
     require_once '../db_login.php';
     $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
@@ -66,42 +68,87 @@ if (isset($_POST['type'])) {
 
 //    echo $type."==".$branch."==".$publisher."==".$title."==".$magazing."==".$grapher."==".$writter."==".$length."==".$publishTime."==".$path."==".$filename;
 
+    if ($ope == "修改"){
+        switch ($type){
+            case '外媒':
+//                echo 'YYYYYY';
+                $query = "UPDATE `propaganda` SET 
+                          `publisher`='".$publisher."',`magzing`='".$magazing."',
+                          `grapher`='".$grapher."',`writter`='".$writter."',`length`='".$length."',
+                          `publishTime`='".$publishTime."',`file`='" . $path . $filename . "',
+                          `influence`='".$influrence."',`year`='" . date("Y") . "' 
+                          WHERE `branch`='".$branch."' AND `type`='外媒' AND `title`='".$title."'";
+                $conn->query($query);
+                echo "<script>alert('修改成功！'); location.href='./outPropaganda.php'</script>";
+                break;
+            case '内刊':
+                $query = "UPDATE `propaganda` SET 
+                          `publisher`='".$publisher."',`magzing`='".$magazing."',
+                          `grapher`='".$grapher."',`writter`='".$writter."',`length`='".$length."',
+                          `publishTime`='".$publishTime."',`file`='" . $path . $filename . "',
+                          `influence`='".$influrence."',`year`='" . date("Y") . "' 
+                          WHERE `branch`='".$branch."' AND `type`='内刊' AND `title`='".$title."'";
+                $conn->query($query);
+                echo "<script>alert('修改成功！'); location.href='./inPropaganda.php'</script>";
+                break;
+            case '工会':
+                $query = "UPDATE `propaganda` SET 
+                          `publisher`='".$publisher."',`magzing`='".$magazing."',
+                          `grapher`='".$grapher."',`writter`='".$writter."',`length`='".$length."',
+                          `publishTime`='".$publishTime."',`file`='" . $path . $filename . "',
+                          `influence`='".$influrence."',`year`='" . date("Y") . "' 
+                          WHERE `branch`='".$branch."' AND `type`='工会' AND `title`='".$title."'";
+                $conn->query($query);
+                echo "<script>alert('修改成功！'); location.href='./union.php'</script>";
+                break;
 
-    switch ($type) {
-        case '外媒':
-            $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
+        }
+
+    }else{
+        switch ($type) {
+            case '外媒':
+                $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
                           `grapher`, `writter`, `length`, `publishTime`, `file`, `type`, `influence`, `year`) 
                           VALUES (NULL ,'" . $branch . "' ,'" . $publisher . "','" . $title . "','" . $magazing . "','" . $grapher . "',
                           '" . $writter . "','" . $length . "','" . $publishTime . "','" . $path . $filename . "','" . $type . "', '" . $influrence . "', '" . date("Y") . "')";
-            $conn->query($query);
+                $conn->query($query);
+                echo "<script>alert('创建成功！');</script>";
                 echo "<script> window.location.href='./outPropaganda.php';</script>";
-            break;
-        case '内刊':
-            $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
+                break;
+            case '内刊':
+                $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
                           `grapher`, `writter`, `length`, `publishTime`, `file`, `type`, `year`) 
                           VALUES (NULL ,'" . $branch . "' ,'" . $publisher . "','" . $title . "','" . $magazing . "','" . $grapher . "',
                           '" . $writter . "','" . $length . "','" . $publishTime . "','" . $path . $filename . "','" . $type . "', '" . date("Y") . "')";
-            $conn->query($query);
-            echo "<script> window.location.href='./inPropaganda.php';</script>";
-            break;
-        case '工会':
-            $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
+                $conn->query($query);
+                echo "<script>alert('创建成功！');</script>";
+                echo "<script> window.location.href='./inPropaganda.php';</script>";
+                break;
+            case '工会':
+                $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
                           `grapher`, `writter`, `length`, `publishTime`, `file`, `type`, `year`) 
                           VALUES (NULL ,'" . $branch . "' ,'" . $publisher . "','" . $title . "','" . $magazing . "','" . $grapher . "',
                           '" . $writter . "','" . $length . "','" . $publishTime . "','" . $path . $filename . "','" . $type . "', '" . date("Y") . "')";
-            $conn->query($query);
-            echo "<script> window.location.href='./union.php';</script>";
-            break;
-        case '政务信息':
-            $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
+                $conn->query($query);
+                echo "<script>alert('创建成功！');</script>";
+                echo "<script> window.location.href='./union.php';</script>";
+                break;
+            case '政务信息':
+                $query = "INSERT INTO `propaganda`(`id`, `branch`, `publisher`, `title`, `magzing`,
                           `writter`, `publishTime`, `file`, `type`, `year`) 
                           VALUES (NULL ,'" . $branch . "' ,'" . $publisher . "','" . $title . "','" . $magazing . "',
                           '" . $writter . "','" . $publishTime . "','" . $path . $filename . "','" . $type . "', '" . date("Y") . "')";
-            $conn->query($query);
-            echo "<script> window.location.href='./affairsInfo.php';</script>";
-            break;
+                $conn->query($query);
+                echo "<script>alert('创建成功！');</script>";
+                echo "<script> window.location.href='./affairsInfo.php';</script>";
+                break;
+
+        }
 
     }
+
+
+
 
     $conn->close();
 }

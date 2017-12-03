@@ -84,10 +84,10 @@
                     <th class="text-center" width="5%">序号</th>
                     <th class="text-center" width="30%">标题</th>
                     <th class="text-center" width="20%">刊物</th>
-                    <th class="text-center" width="20%">图/文作者</th>
+                    <th class="text-center" width="15%">图/文作者</th>
                     <th class="text-center" width="5%">字数</th>
-                    <th class="text-center" width="15%">发表时间</th>
-                    <th class="text-center" width="5%">附件</th>
+                    <th class="text-center" width="10%">发表时间</th>
+                    <th class="text-center" width="15%">操作</th>
                 </tr>
                 <?php
                 if ($type == '外媒'){
@@ -104,7 +104,7 @@
                         <td class="text-center">图：{$rows['grapher']}/文：{$rows['writter']}</td>
                         <td class="text-center">{$rows['length']}</td>
                         <td class="text-center">{$rows['publishTime']}</td>
-                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a>&nbsp;<a href="./modifyOutPropaganda.php?title={$rows['title']}&type=外媒&branch={$branch}">修改</a>&nbsp;<a href="./confirmDelete.php?title={$rows['title']}&type=外媒&branch={$branch}">删除</a></td>
                     </tr>
 PRINTTABLE;
                         $index++;
@@ -124,7 +124,7 @@ PRINTTABLE;
                         <td class="text-center">图：{$rows['grapher']}/文：{$rows['writter']}</td>
                         <td class="text-center">{$rows['length']}</td>
                         <td class="text-center">{$rows['publishTime']}</td>
-                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a>&nbsp;<a href="./modifyPropaganda.php?title={$rows['title']}&type=内刊&branch={$branch}">修改</a>&nbsp;<a href="./confirmDelete.php?title={$rows['title']}&type=内刊&branch={$branch}">删除</a></td>
                     </tr>
 PRINTTABLE;
                         $index++;
@@ -143,7 +143,7 @@ PRINTTABLE;
                         <td class="text-center">图：{$rows['grapher']}/文：{$rows['writter']}</td>
                         <td class="text-center">{$rows['length']}</td>
                         <td class="text-center">{$rows['publishTime']}</td>
-                        <td class="text-center"><a href="{$rows['file']}">查看</a></td>
+                        <td class="text-center"><a href="{$rows['file']}">查看</a>&nbsp;<a href="./modifyPropaganda.php?title={$rows['title']}&type=工会&branch={$branch}">修改</a>&nbsp;<a href="./confirmDelete.php?title={$rows['title']}&type=工会&branch={$branch}">删除</a></td>
                     </tr>
 PRINTTABLE;
                         $index++;

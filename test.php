@@ -1,416 +1,100 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
-<html>
-
+<?php session_start(); ?>
+<html lang="en">
 <head>
-    <title>首页</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./fonts/font-awesome/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/bootstrap-treeview.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
-    <link href="./css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="./css/style.css" rel="stylesheet"/>
+    <!-- Required Javascript -->
+    <!--<script src="./js/jquery-3.1.1.js"></script>-->
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/bootstrap-treeview.min.js"></script>
 
-    <!--<script src="./js/jquery-3.2.1.min.js"></script>-->
-    <script src="../js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
-    <style type="text/css">
-
-    </style>
-    <script type="text/javascript">
-        $(function () {
-            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-            $('.tree li.parent_li > span').on('click', function (e) {
-                var children = $(this).parent('li.parent_li').find(' > ul > li');
-                if (children.is(":visible")) {
-                    children.hide('fast');
-                    $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
-                } else {
-                    children.show('fast');
-                    $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
-                }
-                e.stopPropagation();
-            });
-            $('.tree li.parent_li > span').click();
-        });
-
-    </script>
 </head>
 <body>
-<div class="tree well">
-    <ul>
-        <li>
-            <span><i class="glyphicon glyphicon-th-list"></i> 组织管理</span>
-            <ul>
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 机关党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/office.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=机关党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=机关党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=机关党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=机关党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=机关党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=机关党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
+<?php
+    require_once './db_login.php';
+    $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+    if ($conn->connect_error) die($conn->connect_error);
+    mysqli_set_charset($conn, 'utf8');
 
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 通信室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/communication.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=通信室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=通信室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=通信室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=通信室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=通信室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=通信室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 通信运行室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/commuRun.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=通信运行室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=通信运行室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=通信运行室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=通信运行室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=通信运行室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=通信运行室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 自动化数据室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/automatic.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=自动化数据室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=自动化数据室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=自动化数据室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=自动化数据室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=自动化数据室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=自动化数据室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 雷达室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/radar.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=雷达室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=雷达室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=雷达室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=雷达室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=雷达室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=雷达室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 导航室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/navi.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=导航室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=导航室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=导航室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=导航室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=导航室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=导航室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 航路导航室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/route.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=航路导航室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=航路导航室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=航路导航室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=航路导航室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=航路导航室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=航路导航室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 供电室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/power.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=供电室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=供电室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=供电室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=供电室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=供电室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=供电室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 维修室党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/maintain.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=维修室党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=维修室党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=维修室党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=维修室党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=维修室党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=维修室党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <span><i class="glyphicon glyphicon-plus-sign"></i> 现场车队党支部</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-info-sign"></i> <a href="./sectorinfo/motor.html">支部概述</a></span>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-user"></i> 个人信息</span>
-                            <ul>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star"></i> <a href="./member.php?branch=现场车队党支部">党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-star-empty"></i> <a href="./pre_member.php?branch=现场车队党支部">预备党员</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-ok"></i> <a href="./develop_member.php?branch=现场车队党支部">发展对象</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-time"></i> <a href="./active_member.php?branch=现场车队党支部">积极分子</a></span>
-                                </li>
-                                <li>
-                                    <span><i class="glyphicon glyphicon-envelope"></i> <a href="./application_member.php?branch=现场车队党支部">申请入党</a></span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span><i class="glyphicon glyphicon-yen"></i> <a href="./feeinfo.php?branch=现场车队党支部">党费信息</a></span>
-                        </li>
-                    </ul>
-                </li>
+    $query = "SELECT * FROM `person` WHERE `branch`='自动化数据室党支部' AND `type`='党员'";
+    $result = $conn->query($query);
+    $i = 0;
+    $member = [];
+    while ($row = $result->fetch_array()){
+        $member[$i] = $row['name'];                  // 获取支部全部党员姓名
+        $i++;
+    }
+?>
+<form action="" method="post" class="new-form">
+    <div class="d-info clearfix">
+        <div class="fo-item">
+            <label for="name" class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <select name="name" id="name" onchange="javascript:setFlag()" title="">
+                    <option value="">请选择党员</option>
+                    <?php
+                    for ($j = 0;$j < sizeof($member); $j++){
+                        if ($_GET['flag'] == 1){
+                            if ($member[$j] == $_GET['selectedName']){
+                                echo <<<NAME
+                            <option value="{$member[$j]}" selected="selected">{$member[$j]}</option>
+NAME;
+                            }else{
+                                echo <<<NAME
+                            <option value="{$member[$j]}">{$member[$j]}</option>
+NAME;
+                            }
+                        }else{
+                            echo <<<NAME
+                            <option value="{$member[$j]}">{$member[$j]}</option>
+NAME;
+                        }
 
 
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <input type="hidden" class="layui-input" name="flag" id="flag" value="0">
+    </div>
+</form>
+<script language="javascript">
+    function setFlag()
+    {
+        // var sel = document.getElementById("base");
+        // sel.disabled(true);
+        alert("XXX");
+        $("#flag").val("1");        // 已选择标志位设置为1
+        var val = $("#name").val(); // 获取选择党员姓名
+        var url = "test.php";
+        url += "?selectedName="+val+"&branch=自动化数据室党支部&flag=1";
+        location.href = url;        // 刷新页面
+        /*var obj = document.getElementById("name");
 
 
-            </ul>
-        </li>
+        // obj.options[obj.options.selectedIndex].setAttr("selected","selected");
+        for (var i=0;i<obj.options.length;i++){
 
-        <li>
-            <span><i class="glyphicon glyphicon-duplicate"></i> 任务推送</span>
-            <ul>
-                <li>
-                    <span><i class="glyphicon glyphicon-paperclip"></i> 定期工作</span>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    <span><i class="glyphicon glyphicon-random"></i> 不定期工作</span>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-flag"></i> 抢接任务</span> <a href=""></a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <span><i class="glyphicon glyphicon-flag"></i> 指定任务</span> <a href=""></a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    <span><i class="glyphicon glyphicon-flag"></i> 亮点工作</span> <a href=""></a>
-                </li>
-            </ul>
-        </li>
+            if (obj.options[i].innerHTML === val){
+                // alert("==="+i);
+                // obj.options[i].setAttr("selected",true);
 
 
+                break;
+            }
+        }*/
 
-
-        <li>
-            <span><i class="icon-folder-open"></i> 顶级节点2</span> <a href=""></a>
-            <ul>
-                <li>
-                    <span><i class="icon-leaf"></i> 一级节点2_1</span> <a href=""></a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
+    }
+</script>
 </body>
-
 </html>

@@ -143,14 +143,14 @@ PRINTFORM;
                         </div>
                         <br>
                         <div class="fo-item">
-						<label for="" class="layui-form-label">发表位置</label>
-						<div class="layui-input-inline">
-							<select name="magazing">
-                                          <option value="内网">内网</option>
-                                          <option value="西北空管">西北空管</option>
-                                        </select>
-						</div>
-                           </div>
+                            <label for="" class="layui-form-label">发表位置</label>
+                            <div class="layui-input-inline">
+                                <select name="magazing">
+                                              <option value="内网">内网</option>
+                                              <option value="西北空管">西北空管</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="fo-item">
 
                             	<label for="" class="layui-form-label"> 图作者</label>

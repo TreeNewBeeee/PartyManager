@@ -79,7 +79,7 @@ Jump;
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="basic-info"><p>党费收缴表:</p></div>
+                    <div class="basic-info"><p>党费收缴表: </p></div>
 
 
                     <table class="table feeinfo-table" align="center">
@@ -157,7 +157,7 @@ Jump;
                                 <?php
                                 $year = isset($_POST['year']) ? $_POST['year'] : date("Y");
                                 $month = isset($_POST['month']) ? $_POST['month'] : date("m");
-                                //                                echo $year,$month;
+//                                                                echo $year,$month;
 
                                 $query = "select `payment`.`name`,`payment`.`base`,`payment`.`request`, `payment`.`paid`, `payment`.`remark` 
                                           FROM `payment`,`person` 
